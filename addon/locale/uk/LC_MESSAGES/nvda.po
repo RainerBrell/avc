@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-19 18:20+0100\n"
+"PO-Revision-Date: 2023-02-22 14:21+0200\n"
+"Last-Translator: Ivan Shtefuriak <ip0877@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: avc.py:115
+msgid "Error - can not create folder"
+msgstr "Помилка - не можу створити папку"
+
+#: avc.py:140
+msgid "No browser window found"
+msgstr "Вікно браузера не виявлено"
+
+#: avc.py:151
+msgid "URL not found"
+msgstr "адресу не знайдено"
+
+#: avc.py:155
+msgid "Invalid YouTube URL "
+msgstr "Некоректна адреса YouTube-відео "
+
+#. Translators: Title of NVDA settings panel
+#: avc.py:181 avc.py:256
+msgid "Audio Video Converter"
+msgstr "Аудіо Відео Конвертер"
+
+#. Translators: This is the label for the Result folder address in the configuration dialog
+#. self.ResultFolderEdit  = helper.addLabeledControl(_("Result &folder address:"), wx.TextCtrl)
+#. self.ResultFolderEdit.SetValue(getINI("ResultFolder"))
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: avc.py:189
+msgid "&beep while converting"
+msgstr "&сигнал під час перетворення"
+
+#. Translators: Checkbox name in the configuration dialog
+#: avc.py:193
+msgid "&Write YoutTube description file"
+msgstr "&Створювати файл з описом відео"
+
+#. Translators: Checkbox name in the configuration dialog
+#: avc.py:197
+msgid "Write &report file"
+msgstr "Записати &файл звіту"
+
+#: avc.py:267
+msgid "Download YoutTube to MP3"
+msgstr "Завантажити з YouTube у форматі MP3"
+
+#: avc.py:279
+msgid "convert to MP3 "
+msgstr "зберегти як MP3 "
+
+#: avc.py:287
+msgid "Download YoutTube to MP4"
+msgstr "Завантажити з YouTube у форматі MP4"
+
+#: avc.py:299
+msgid "convert to MP4 "
+msgstr "зберегти як MP4 "
+
+#: avc.py:307
+msgid "Open result folder"
+msgstr "Відкрити папку з результатами"

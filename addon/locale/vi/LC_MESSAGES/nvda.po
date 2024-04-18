@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: trình chuyển đổi âm thanh 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-19 18:20+0100\n"
+"PO-Revision-Date: 2023-06-28 11:34+0700\n"
+"Last-Translator: \n"
+"Language-Team: vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: avc.py:115
+msgid "Error - can not create folder"
+msgstr "Lỗi - không thể tạo thư mục"
+
+#: avc.py:140
+msgid "No browser window found"
+msgstr "Không tìm thấy cửa sổ trình duyệt"
+
+#: avc.py:151
+msgid "URL not found"
+msgstr "không tìm thấy URL"
+
+#: avc.py:155
+msgid "Invalid YouTube URL "
+msgstr "URL YouTube không hợp lệ"
+
+#. Translators: Title of NVDA settings panel
+#: avc.py:181 avc.py:256
+msgid "Audio Video Converter"
+msgstr "Chuyển đổi video âm thanh"
+
+#. Translators: This is the label for the Result folder address in the configuration dialog
+#. self.ResultFolderEdit  = helper.addLabeledControl(_("Result &folder address:"), wx.TextCtrl)
+#. self.ResultFolderEdit.SetValue(getINI("ResultFolder"))
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: avc.py:189
+msgid "&beep while converting"
+msgstr "&bíp trong khi chuyển đổi"
+
+#. Translators: Checkbox name in the configuration dialog
+#: avc.py:193
+msgid "&Write YoutTube description file"
+msgstr "&Viết tệp mô tả YoutTube"
+
+#. Translators: Checkbox name in the configuration dialog
+#: avc.py:197
+msgid "Write &report file"
+msgstr "Viết &tệp báo cáo"
+
+#: avc.py:267
+msgid "Download YoutTube to MP3"
+msgstr "Tải Youtube về MP3"
+
+#: avc.py:279
+msgid "convert to MP3 "
+msgstr "chuyển đổi sang mp3"
+
+#: avc.py:287
+msgid "Download YoutTube to MP4"
+msgstr "Tải Youtube xuống MP4"
+
+#: avc.py:299
+msgid "convert to MP4 "
+msgstr "chuyển đổi sang MP4"
+
+#: avc.py:307
+msgid "Open result folder"
+msgstr "Mở thư mục kết quả"
