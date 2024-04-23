@@ -3,6 +3,7 @@ addon/doc/en/
 *_docHandler.py
 *.html
 manifest.ini
+go.bat
 *.mo
 *.pot
 *.py[co]

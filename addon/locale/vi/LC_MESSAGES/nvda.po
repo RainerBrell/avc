@@ -3,77 +3,161 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: trình chuyển đổi âm thanh 1.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 18:20+0100\n"
-"PO-Revision-Date: 2023-06-28 11:34+0700\n"
-"Last-Translator: \n"
-"Language-Team: vietnamese\n"
+"POT-Creation-Date: 2024-04-18 09:10+0200\n"
+"PO-Revision-Date: 2024-04-21 11:56+0700\n"
+"Last-Translator: nguyenninhhoang <nguyenninhhoang2005@gmail.com>\n"
+"Language-Team: \n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: avc.py:115
+#. Translators: Could not create  folder.
+#: __init__.py:183
 msgid "Error - can not create folder"
-msgstr "Lỗi - không thể tạo thư mục"
+msgstr "lỗi - không thể tạo thư mục"
 
-#: avc.py:140
+#. Translators: The user is not in a browser.
+#: __init__.py:232
 msgid "No browser window found"
-msgstr "Không tìm thấy cửa sổ trình duyệt"
+msgstr "không tìm thấy trình duyệt"
 
-#: avc.py:151
-msgid "URL not found"
-msgstr "không tìm thấy URL"
+#. Translators: No URL found in browser document, function terminate
+#: __init__.py:406
+msgid "Document URL not found - exit"
+msgstr "không tìm thấy URL tài liệu hướng dẫn - thoát"
 
-#: avc.py:155
-msgid "Invalid YouTube URL "
-msgstr "URL YouTube không hợp lệ"
+#. Translators: save YouTube Video as MP3 or MP4
+#: __init__.py:417
+msgid "Save YouTube Video as {MultimediaFormat}"
+msgstr "Lưu video YouTube với {định dạng đa phương tiện}"
 
-#. Translators: Title of NVDA settings panel
-#: avc.py:181 avc.py:256
-msgid "Audio Video Converter"
-msgstr "Chuyển đổi video âm thanh"
+#. Translators: save multimedia link  as MP3 or MP4
+#: __init__.py:444
+msgid "Save link as {MultimediaFormat}"
+msgstr "lưu link với định dạng đa phương tiện"
 
-#. Translators: This is the label for the Result folder address in the configuration dialog
-#. self.ResultFolderEdit  = helper.addLabeledControl(_("Result &folder address:"), wx.TextCtrl)
-#. self.ResultFolderEdit.SetValue(getINI("ResultFolder"))
+#. Translators: No YouTube video and no multimedia link found
+#: __init__.py:451
+msgid "No YouTube video and no multimedia link found"
+msgstr "không có YouTube video và không có link đa phương tiện"
+
+#. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
+#. Translators: This is a label for an edit field in the AVC Settings panel.
+#: __init__.py:461
+msgid "Result folder"
+msgstr "kết quả thư mục"
+
+#. Translators: The label of a button to browse for a directory
+#: __init__.py:466
+msgid "&Browse..."
+msgstr "&thay đổi"
+
+#. Translators: The title of the dialog presented when browsing for the directory.
+#: __init__.py:468
+msgid "Select a directory"
+msgstr "chọn đường dẫn"
+
 #. Translators: Checkbox name for sound signal feedback in the configuration dialog
-#: avc.py:189
+#: __init__.py:475
 msgid "&beep while converting"
-msgstr "&bíp trong khi chuyển đổi"
+msgstr "&beep trong khi chuyển đổi "
 
 #. Translators: Checkbox name in the configuration dialog
-#: avc.py:193
+#: __init__.py:479
 msgid "&Write YoutTube description file"
-msgstr "&Viết tệp mô tả YoutTube"
+msgstr "&viết báo cáo tệp mô tả YouTube"
 
 #. Translators: Checkbox name in the configuration dialog
-#: avc.py:197
+#: __init__.py:483
 msgid "Write &report file"
-msgstr "Viết &tệp báo cáo"
+msgstr "viết &báo cáo tập tin"
 
-#: avc.py:267
-msgid "Download YoutTube to MP3"
-msgstr "Tải Youtube về MP3"
+#. Translator: Title of error dialog "Folder does not exist"
+#: __init__.py:494
+msgid "Error - Folder does not exist"
+msgstr "Lỗi - Thư mục không tồn tại"
 
-#: avc.py:279
-msgid "convert to MP3 "
-msgstr "chuyển đổi sang mp3"
+#: __init__.py:497
+msgid ""
+"The folder ({folderPath}) does not exist.\n"
+"Please check the path or use the Browse button.\n"
+"The changes were not saved."
+msgstr ""
+"Thư mục ({folderPath}) không tồn tại.\n"
+"Vui lòng kiểm tra đường dẫn hoặc sử dụng nút Duyệt.\n"
+"Những thay đổi chưa được lưu."
 
-#: avc.py:287
-msgid "Download YoutTube to MP4"
-msgstr "Tải Youtube xuống MP4"
+#. Translator: Title of error dialog "No write access to folder"
+#: __init__.py:512
+msgid "Error - No write access to folder"
+msgstr "Lỗi - Không có quyền ghi vào thư mục"
 
-#: avc.py:299
-msgid "convert to MP4 "
-msgstr "chuyển đổi sang MP4"
+#: __init__.py:515
+msgid ""
+"No write access to folder {folderPath} (Code: {code})\n"
+"Please select a folder with write access.\n"
+"The changes were not saved."
+msgstr ""
+"Không có quyền ghi vào thư mục {folderPath} (Mã: {code})\n"
+"Vui lòng chọn một thư mục có quyền ghi.\n"
+"Những thay đổi chưa được lưu."
 
-#: avc.py:307
+#. Translators: The converting process will terminate by user
+#: __init__.py:558
+msgid "The converting process will terminate."
+msgstr "Quá trình chuyển đổi sẽ chấm dứt."
+
+#. Translators: Canceling process by user. No converting task active.
+#: __init__.py:568
+msgid "No converting task active."
+msgstr "Không có tác vụ chuyển đổi nào đang hoạt động."
+
+#: __init__.py:606
+msgid "Save as MP3"
+msgstr "lưu dưới dạng MP3"
+
+#: __init__.py:613
+msgid "Save as MP4"
+msgstr "lưu dưới dạng MP4"
+
+#: __init__.py:620
 msgid "Open result folder"
-msgstr "Mở thư mục kết quả"
+msgstr "mở kết quả thư mục"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Audio Video Converter"
+msgstr "Audio Video Converter"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+"the browser."
+msgstr ""
+"Chuyển đổi video YouTube hoặc liên kết đa phương tiện sang MP3 hoặc MP4 "
+"trực tiếp từ trình duyệt."
+
+#. Translators: Title of the window if an error occurred during unpacking.
+#: installTasks.py:64
+msgid "Attention - error when unpacking"
+msgstr "Chú ý - lỗi khi giải nén"
+
+#: installTasks.py:67
+msgid ""
+"The file {file} could not be unpacked correctly in the folder {folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"Không thể giải nén tệp {file} chính xác trong thư mục {folder}.\n"
+"Hãy tự mình thử tại địa phương hoặc liên hệ với tác giả của tiện ích mở "
+"rộng này."

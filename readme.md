@@ -68,7 +68,7 @@ These audio and video formats are recognized and converted to the desired format
 * Hosted on GitHub and available in the NVDA Store
 * The results folder can be customized in the NVDA settings
 * Settings are now saved reliably
-* Localization in Turkish, Vietnamese and Ukrainian
+* Localization in Turkish, Vietnamese, Ukrainian and Portuguese
 
 ## Thank you very much
 
