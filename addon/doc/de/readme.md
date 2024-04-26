@@ -61,14 +61,14 @@ Diese Audio- und Videoformate werden erkannt und in das gewünschte Format konve
 * avchd
 * 3gp
 
-## Änderungen in der aktuellen Version 
+## Änderungen in Version 2024.04.26
 
 * Funktioniert aus technischen Gründen nur mit Windows 64 BIT
 * Funktioniert jetzt auch wieder in Firefox 
 * Auf GitHub gehostet und im NVDA Store verfügbar 
 * Der Ergebnisordner kann in den NVDA-Einstellungen angepasst werden
 * Die Einstellungen werden jetzt zuverlässig gespeichert 
-* Lokalisierung in türkisch, vietnamesisch, ukrainisch und portugiesisch
+* Lokalisierung in türkisch, polnisch, italienisch, französisch, spanisch, vietnamesisch, ukrainisch und portugiesisch
 
 ## Dankeschön 
 

@@ -20,13 +20,13 @@
  *** can be deactivated on the NVDA Settings 
  Youtube result filename now safed without checksum 
  
- *** 2024.04.18 
+ *** 2024.04.26 
  - works with NVDA 2024.1 
  - Works again with the current Firefox version
  - Customizied result folder 
  - A link with a multimedia extension is recognized and saved as an MP3 or MP4
  - the ffmpeg.exe is unziped on installation 
- - Translations into Ukrainian, Turkish, vietnames 
+ - Translations into Ukrainian, Turkish, vietnames and more 
  
  *** In Progress for future  *** 
  - The conversion process can be killed 

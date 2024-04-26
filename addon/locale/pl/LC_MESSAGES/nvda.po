@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AVC 2024.04\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-18 09:10+0200\n"
+"PO-Revision-Date: 2024-04-25 15:43+0200\n"
+"Last-Translator: Rainer Brell <nvda@brell.net>\n"
+"Language-Team: google Translator\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. Translators: Could not create  folder.
+#: __init__.py:183
+msgid "Error - can not create folder"
+msgstr "Błąd - nie można utworzyć folderu"
+
+#. Translators: The user is not in a browser.
+#: __init__.py:232
+msgid "No browser window found"
+msgstr "Nie znaleziono okna przeglądarki"
+
+#. Translators: No URL found in browser document, function terminate
+#: __init__.py:406
+msgid "Document URL not found - exit"
+msgstr "Nie znaleziono adresu URL dokumentu — zakończ"
+
+#. Translators: save YouTube Video as MP3 or MP4
+#: __init__.py:417
+msgid "Save YouTube Video as {MultimediaFormat}"
+msgstr "Zapisz film z YouTube'a jako {MultimediaFormat}"
+
+#. Translators: save multimedia link  as MP3 or MP4
+#: __init__.py:444
+msgid "Save link as {MultimediaFormat}"
+msgstr "Zapisz link jako {MultimediaFormat}"
+
+#. Translators: No YouTube video and no multimedia link found
+#: __init__.py:451
+msgid "No YouTube video and no multimedia link found"
+msgstr "Nie znaleziono filmu w YouTube ani linku do multimediów"
+
+#. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
+#. Translators: This is a label for an edit field in the AVC Settings panel.
+#: __init__.py:461
+msgid "Result folder"
+msgstr "Folder wyników"
+
+#. Translators: The label of a button to browse for a directory
+#: __init__.py:466
+msgid "&Browse..."
+msgstr "&Przeglądać..."
+
+#. Translators: The title of the dialog presented when browsing for the directory.
+#: __init__.py:468
+msgid "Select a directory"
+msgstr "Wybierz katalog"
+
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: __init__.py:475
+msgid "&beep while converting"
+msgstr "&sygnał dźwiękowy podczas konwersji"
+
+#. Translators: Checkbox name in the configuration dialog
+#: __init__.py:479
+msgid "&Write YoutTube description file"
+msgstr "&Zapisz plik opisu YouTube"
+
+#. Translators: Checkbox name in the configuration dialog
+#: __init__.py:483
+msgid "Write &report file"
+msgstr "Zapisz i zgłoś plik"
+
+#. Translator: Title of error dialog "Folder does not exist"
+#: __init__.py:494
+msgid "Error - Folder does not exist"
+msgstr "Błąd — folder nie istnieje"
+
+#: __init__.py:497
+msgid ""
+"The folder ({folderPath}) does not exist.\n"
+"Please check the path or use the Browse button.\n"
+"The changes were not saved."
+msgstr ""
+"Folder ({folderPath}) nie istnieje.\n"
+"Sprawdź ścieżkę lub użyj przycisku Przeglądaj.\n"
+"Zmiany nie zostały zapisane."
+
+#. Translator: Title of error dialog "No write access to folder"
+#: __init__.py:512
+msgid "Error - No write access to folder"
+msgstr "Błąd — brak dostępu do zapisu w folderze"
+
+#: __init__.py:515
+msgid ""
+"No write access to folder {folderPath} (Code: {code})\n"
+"Please select a folder with write access.\n"
+"The changes were not saved."
+msgstr ""
+"Brak uprawnień do zapisu w folderze {folderPath} (Kod: {code})\n"
+"Wybierz folder z uprawnieniami do zapisu.\n"
+"Zmiany nie zostały zapisane."
+
+#. Translators: The converting process will terminate by user
+#: __init__.py:558
+msgid "The converting process will terminate."
+msgstr "Proces konwersji zostanie zakończony."
+
+#. Translators: Canceling process by user. No converting task active.
+#: __init__.py:568
+msgid "No converting task active."
+msgstr "Żadne zadanie konwersji nie jest aktywne."
+
+#: __init__.py:606
+msgid "Save as MP3"
+msgstr "Zapisz jako MP3"
+
+#: __init__.py:613
+msgid "Save as MP4"
+msgstr "Zapisz jako MP4"
+
+#: __init__.py:620
+msgid "Open result folder"
+msgstr "Otwórz folder wyników"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Audio Video Converter"
+msgstr "Konwerter audio-wideo"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+"the browser."
+msgstr ""
+"Konwertuje wideo YouTube lub łącze multimedialne do formatu MP3 lub MP4 "
+"bezpośrednio z przeglądarki."
+
+#. Translators: Title of the window if an error occurred during unpacking.
+#: installTasks.py:64
+msgid "Attention - error when unpacking"
+msgstr "Uwaga - błąd podczas rozpakowywania"
+
+#: installTasks.py:67
+msgid ""
+"The file {file} could not be unpacked correctly in the folder {folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"Nie można poprawnie rozpakować pliku {file} w folderze {folder}.\n"
+"Wypróbuj lokalnie lub skontaktuj się z autorem tego rozszerzenia."
