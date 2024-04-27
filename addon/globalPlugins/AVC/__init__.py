@@ -20,7 +20,7 @@
  *** can be deactivated on the NVDA Settings 
  Youtube result filename now safed without checksum 
  
- *** 2024.04.26 
+ *** 2024.04.27 
  - works with NVDA 2024.1 
  - Works again with the current Firefox version
  - Customizied result folder 

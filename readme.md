@@ -61,7 +61,7 @@ These audio and video formats are recognized and converted to the desired format
 * avchd
 * 3gp
 
-## Changes in version 2024.04.26
+## Changes in version 2024.04.27
 
 * For technical reasons only works with Windows 64 BIT
 * Now works again in Firefox

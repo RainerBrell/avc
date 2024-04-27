@@ -61,7 +61,7 @@ Diese Audio- und Videoformate werden erkannt und in das gewünschte Format konve
 * avchd
 * 3gp
 
-## Änderungen in Version 2024.04.26
+## Änderungen in Version 2024.04.27
 
 * Funktioniert aus technischen Gründen nur mit Windows 64 BIT
 * Funktioniert jetzt auch wieder in Firefox 
