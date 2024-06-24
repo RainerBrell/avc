@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: AVC 2024.04\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-18 09:10+0200\n"
-"PO-Revision-Date: 2024-04-26 08:32+0200\n"
-"Last-Translator: Rainer Brell <nvda@brell.net>\n"
+"PO-Revision-Date: 2024-04-28 08:05+0200\n"
+"Last-Translator: NetB di Leonardo Marenda <posta@netb.pro>\n"
 "Language-Team: Google Translator\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Nessuna finestra del browser trovata"
 #. Translators: No URL found in browser document, function terminate
 #: __init__.py:406
 msgid "Document URL not found - exit"
-msgstr "URL del documento non trovato: esci"
+msgstr "URL del documento non trovato - esci"
 
 #. Translators: save YouTube Video as MP3 or MP4
 #: __init__.py:417
@@ -41,12 +41,14 @@ msgstr "Salva il video di YouTube come {MultimediaFormat}"
 #. Translators: save multimedia link  as MP3 or MP4
 #: __init__.py:444
 msgid "Save link as {MultimediaFormat}"
-msgstr "Salva collegamento come {MultimediaFormat}"
+msgstr "Salva link come {MultimediaFormat}"
 
 #. Translators: No YouTube video and no multimedia link found
 #: __init__.py:451
 msgid "No YouTube video and no multimedia link found"
-msgstr "Nessun video YouTube e nessun collegamento multimediale trovato"
+msgstr ""
+"Nessun video YouTube e nessun collegamento a contenuto multimediale "
+"trovato"
 
 #. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
 #. Translators: This is a label for an edit field in the AVC Settings panel.
@@ -57,27 +59,27 @@ msgstr "Cartella dei risultati"
 #. Translators: The label of a button to browse for a directory
 #: __init__.py:466
 msgid "&Browse..."
-msgstr "&Navigare..."
+msgstr "&Sfoglia..."
 
 #. Translators: The title of the dialog presented when browsing for the directory.
 #: __init__.py:468
 msgid "Select a directory"
-msgstr "Seleziona una directory"
+msgstr "Seleziona una cartella"
 
 #. Translators: Checkbox name for sound signal feedback in the configuration dialog
 #: __init__.py:475
 msgid "&beep while converting"
-msgstr "&emette un segnale acustico durante la conversione"
+msgstr "&emetti un segnale acustico durante la conversione"
 
 #. Translators: Checkbox name in the configuration dialog
 #: __init__.py:479
 msgid "&Write YoutTube description file"
-msgstr "&Scrivi il file di descrizione di YouTube"
+msgstr "&Inserisci la descrizione del video di YouTube"
 
 #. Translators: Checkbox name in the configuration dialog
 #: __init__.py:483
 msgid "Write &report file"
-msgstr "Scrivi il file &report"
+msgstr "Scrivi un file di &Rapporto"
 
 #. Translator: Title of error dialog "Folder does not exist"
 #: __init__.py:494
@@ -136,7 +138,7 @@ msgstr "Apri la cartella dei risultati"
 #. to be shown on installation and add-on information found in Add-ons Manager.
 #: buildVars.py:23
 msgid "Audio Video Converter"
-msgstr "Convertitore audio video"
+msgstr "Convertitore audio e video"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
@@ -145,13 +147,13 @@ msgid ""
 "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
 "the browser."
 msgstr ""
-"Converte un video di YouTube o un collegamento multimediale in MP3 o MP4 "
-"direttamente dal browser."
+"Converte un video di YouTube o un link ad un contenuto multimediale in "
+"MP3 o MP4 direttamente dal browser."
 
 #. Translators: Title of the window if an error occurred during unpacking.
 #: installTasks.py:64
 msgid "Attention - error when unpacking"
-msgstr "Attenzione: errore durante il disimballaggio"
+msgstr "Attenzione: errore nella decompressione"
 
 #: installTasks.py:67
 msgid ""
@@ -160,4 +162,4 @@ msgid ""
 msgstr ""
 "Non è stato possibile decomprimere correttamente il file {file} nella "
 "cartella {folder}.\n"
-"Provalo tu stesso localmente o contatta l'autore di questa estensione."
+"Prova localmente o contatta l'autore di questo componente aggiuntivo."

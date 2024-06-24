@@ -4,23 +4,23 @@
 
 ## Funzionalità
 
-Il "Convertitore audio video" salva e converte un video di YouTube o il collegamento multimediale da un browser in formato MP3 o MP4.
+Il "Convertitore audio video" salva e converte un video di YouTube o un collegamento multimediale da un browser in formato MP3 o MP4.
 
-Se ti trovi su una pagina YouTube nel tuo browser, il video YouTube verrà salvato nel formato desiderato senza pubblicità. Funziona anche se la pubblicità è ancora in riproduzione all'avvio.
+Se ti trovi su una pagina di YouTube nel tuo browser, il video verrà salvato nel formato desiderato senza annuncio, anche se quest'ultimo è ancora in riproduzione.
 
 Un video YouTube di 1 ora può essere salvato come MP3 in circa 2 minuti. Ciò dipende dalle prestazioni del computer.
 
-Funziona anche se stai attualmente riproducendo un canale in modo che tutti i video nel canale vengano caricati. Questa operazione può richiedere molto tempo e occupare molto spazio sul disco rigido.
+Se si sta riproducendo un intero canale, verrà convertito tutto. Ciò può occupare molto spazio nel proprio disco rigido.
 
-Non appena viene attivato il comando di conversione è possibile chiudere il browser. Il processo continua in sottofondo, segnalato dai suoni.
+Non appena viene impartito il comando di conversione è possibile chiudere il browser. Il processo continua in sottofondo, segnalato da dei suoni.
 
-Allo stesso tempo, per ogni video di YouTube viene creato un file di testo con una descrizione. Potresti trovare informazioni utili lì. Il file di testo può essere letto con l'editor di Windows. La creazione di questo file può essere personalizzata nelle impostazioni.
+Per ogni video di YouTube viene creato un file di testo con una descrizione, nel quale saranno contenyute maggiori informazioni. Esso può essere letto con il blocco note di windows e personalizzato dalle impostazioni.
 
-Se non sei su YouTube, controllerà se ti trovi su un collegamento che punta a un file multimediale. In tal caso, la destinazione verrà salvata di conseguenza e convertita nel formato desiderato.
+Se non ci si trova su YouTube, il componente controllerà se ci si trova su un link ad un file multimediale. In tal caso il contenuto verrà convertito e salvato di conseguenza.
 
-Durante la conversione, verrà emesso un leggero segnale acustico per informarti che la conversione è ancora in corso. Questo suono può essere disabilitato nelle impostazioni.
+Durante la conversione, verrà emesso un segnale acustico per informarti che la conversione è ancora in corso. Questo suono può essere disabilitato nelle impostazioni.
 
-I risultati vengono salvati nella propria cartella, a cui è possibile accedere con un singolo tasto di scelta rapida. La cartella può essere personalizzata nelle impostazioni di NVDA.
+I risultati vengono salvati in una cartella, a cui è possibile accedere con un singolo tasto di scelta rapida. La cartella può essere personalizzata nelle impostazioni di NVDA.
 
 ### Tasti di scelta rapida
 
@@ -28,9 +28,9 @@ I risultati vengono salvati nella propria cartella, a cui è possibile accedere 
 * NVDA+shift+y, converte in MP4
 * NVDA+Control+y, Apre la cartella con i risultati
 
-## Questi formati sono riconosciuti
+## Formati riconosciuti
 
-Questi formati audio e video vengono riconosciuti e convertiti nel formato desiderato quando ci si trova su un collegamento multimediale che presenta una di queste estensioni.
+I formati audio e video riconosciuti quando ci si trova su un link che punta ad un file multimediale sono:
 
 * aac
 * avi
@@ -58,17 +58,17 @@ Questi formati audio e video vengono riconosciuti e convertiti nel formato desid
 * flav
 * swf
 * avchd
-* 3Mo
+* 3Mo.
 
 ## Modifiche nella versione attuale
 
-* Per motivi tecnici funziona solo con Windows 64 BIT
-* Ora funziona di nuovo in Firefox
-* Ospitato su GitHub e disponibile su NVDA Store
+* Per motivi tecnici, il componente funziona solo  con Windows a 64 BIT
+* Risolto il non funzionamento con il browser Firefox
+* Ora il componente ha il proprio repository su GitHub, e lo si può trovare nello store dei componenti aggiuntivi di NVDA
 * La cartella dei risultati può essere personalizzata nelle impostazioni di NVDA
-* Le impostazioni vengono ora salvate in modo affidabile
-* Localizzazione in turco, polacco, italiano, francese, spagnolo, vietnamita, ucraino e portoghese
+* Migliorato il modo nel quale vengono salvate le impostazioni
+* Traduzione in  turco, polacco, italiano, francese, spagnolo, vietnamita, ucraino e portoghese
 
-## Grazie mille
+## Ringraziamenti
 
-Grazie a tutti gli aiutanti che hanno dedicato del tempo a tradurre la mia estensione e hanno fornito feedback.
+Un ringraziamento va a tyutti i traduttori del componente, nonché a tutti quelli che, nell'uso, hanno fornito feedback volti al suo miglioramento.

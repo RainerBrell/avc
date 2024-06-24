@@ -28,6 +28,9 @@
  - the ffmpeg.exe is unziped on installation 
  - Translations into Ukrainian, Turkish, vietnames and more 
  
+ *** 2024.06.24 
+ - New yt-dlp.exe 
+ 
  *** In Progress for future  *** 
  - The conversion process can be killed 
  - The Youtube downloader working in the background is automatically updated every 30 days 
