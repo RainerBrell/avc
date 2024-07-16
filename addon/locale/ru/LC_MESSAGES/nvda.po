@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AVC\n"
+"POT-Creation-Date: 2024-05-06 11:33+0700\n"
+"PO-Revision-Date: 2024-05-06 13:55+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: globalPlugins\n"
+"X-Poedit-SearchPath-1: installTasks.py\n"
+
+#: globalPlugins/AVC/__init__.py:183
+msgid "Error - can not create folder"
+msgstr "Ошибка - невозможно создать папку"
+
+#: globalPlugins/AVC/__init__.py:232
+msgid "No browser window found"
+msgstr "Окно браузера не обнаружено"
+
+#: globalPlugins/AVC/__init__.py:406
+#| msgid "URL not found"
+msgid "Document URL not found - exit"
+msgstr "URL адрес документа не обнаружен – Выход"
+
+#: globalPlugins/AVC/__init__.py:417
+#, python-brace-format
+msgid "Save YouTube Video as {MultimediaFormat}"
+msgstr "Сохранить видео YouTube как {MultimediaFormat}"
+
+#: globalPlugins/AVC/__init__.py:444
+#, python-brace-format
+msgid "Save link as {MultimediaFormat}"
+msgstr "Сохранить ссылку как {MultimediaFormat}"
+
+#: globalPlugins/AVC/__init__.py:451
+msgid "No YouTube video and no multimedia link found"
+msgstr "Видео на You Tube и мультимедийная ссылка не найдены"
+
+#: globalPlugins/AVC/__init__.py:461
+#| msgid "Open result folder"
+msgid "Result folder"
+msgstr "Папка с результатами"
+
+#: globalPlugins/AVC/__init__.py:466
+msgid "&Browse..."
+msgstr "&Обзор..."
+
+#: globalPlugins/AVC/__init__.py:468
+msgid "Select a directory"
+msgstr "Выбрать папку"
+
+#: globalPlugins/AVC/__init__.py:475
+msgid "&beep while converting"
+msgstr "&звуковой сигнал при конвертации"
+
+#: globalPlugins/AVC/__init__.py:479
+msgid "&Write YoutTube description file"
+msgstr "&Запись описания YouTube в файл"
+
+#: globalPlugins/AVC/__init__.py:483
+msgid "Write &report file"
+msgstr "&Запись отчета в файл"
+
+#: globalPlugins/AVC/__init__.py:494
+msgid "Error - Folder does not exist"
+msgstr "Ошибка - папка не существует"
+
+#: globalPlugins/AVC/__init__.py:497
+#, python-brace-format
+msgid ""
+"The folder ({folderPath}) does not exist.\n"
+"Please check the path or use the Browse button.\n"
+"The changes were not saved."
+msgstr ""
+"Папка ({folderPath}) не существует.\n"
+"Пожалуйста, проверьте путь или воспользуйтесь кнопкой Обзор.\n"
+"Изменения не сохранились."
+
+#: globalPlugins/AVC/__init__.py:512
+msgid "Error - No write access to folder"
+msgstr "Ошибка - недоступен результат в папке"
+
+#: globalPlugins/AVC/__init__.py:515
+#, python-brace-format
+msgid ""
+"No write access to folder {folderPath} (Code: {code})\n"
+"Please select a folder with write access.\n"
+"The changes were not saved."
+msgstr ""
+"Нет доступа к результатам в папке {folderPath} (Код: {code})\n"
+"Пожалуйста, выберите папку с доступом к результатам.\n"
+"Изменения не сохранились."
+
+#: globalPlugins/AVC/__init__.py:558
+msgid "The converting process will terminate."
+msgstr "Процесс конвертации завершится."
+
+#: globalPlugins/AVC/__init__.py:568
+msgid "No converting task active."
+msgstr "Нет активной задачи преобразования."
+
+#: globalPlugins/AVC/__init__.py:606
+msgid "Save as MP3"
+msgstr "Сохранить как MP3"
+
+#: globalPlugins/AVC/__init__.py:613
+msgid "Save as MP4"
+msgstr "Сохранить как MP4"
+
+#: globalPlugins/AVC/__init__.py:620
+msgid "Open result folder"
+msgstr "Открыть папку с результатами"
+
+#: installTasks.py:63
+msgid "Attention - error when unpacking"
+msgstr "Внимание - ошибка при распаковке"
+
+#: installTasks.py:66
+#, python-brace-format
+msgid ""
+"The file {file} could not be unpacked correctly in the folder "
+"{folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"Файл {file} не удалось корректно распаковать в папку {folder}. \n"
+"Попробуйте сами локально или свяжитесь с автором этого расширения."
+
+#~ msgid "Invalid YouTube URL "
+#~ msgstr "Неверный URL-адрес YouTube "
+
+#~ msgid "Audio Video Converter"
+#~ msgstr "Конвертер аудио-видео"
+
+#~ msgid "Download YoutTube to MP3"
+#~ msgstr "Скачать YouTube в MP3"
+
+#~ msgid "convert to MP3 "
+#~ msgstr "конвертировать в MP3 "
+
+#~ msgid "Download YoutTube to MP4"
+#~ msgstr "Скачать YouTube в MP4"
+
+#~ msgid "convert to MP4 "
+#~ msgstr "конвертировать в MP4 "
+
+#~ msgid "invalid URL"
+#~ msgstr "Неверный URL-адрес"
