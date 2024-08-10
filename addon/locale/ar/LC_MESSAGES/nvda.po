@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-10 05:52+0300\n"
+"PO-Revision-Date: 2024-08-10 06:05+0300\n"
+"Language-Team: tecwindow.net <ahmedbakr593@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n"
+"%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"Language: ar\n"
+
+#. Translators: Could not create  folder.
+#: __init__.py:183
+msgid "Error - can not create folder"
+msgstr "خطأ - لا يمكن إنشاء المجلد"
+
+#. Translators: The user is not in a browser.
+#: __init__.py:232
+msgid "No browser window found"
+msgstr "لم يتم العثور على نافذة متصفح"
+
+#. Translators: No URL found in browser document, function terminate
+#: __init__.py:406
+msgid "Document URL not found - exit"
+msgstr "لم يتم العثور على عنوان URL للمستند - إنهاء"
+
+#. Translators: save YouTube Video as MP3 or MP4
+#: __init__.py:417
+msgid "Save YouTube Video as {MultimediaFormat}"
+msgstr "حفظ فيديو يوتيوب كـ {MultimediaFormat}"
+
+#. Translators: save multimedia link  as MP3 or MP4
+#: __init__.py:444
+msgid "Save link as {MultimediaFormat}"
+msgstr "حفظ الرابط كـ {MultimediaFormat}"
+
+#. Translators: No YouTube video and no multimedia link found
+#: __init__.py:451
+msgid "No YouTube video and no multimedia link found"
+msgstr "لم يتم العثور على فيديو يوتيوب أو رابط وسائط متعددة"
+
+#. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
+#. Translators: This is a label for an edit field in the AVC Settings panel.
+#: __init__.py:461
+msgid "Result folder"
+msgstr "مجلد الملفات"
+
+#. Translators: The label of a button to browse for a directory
+#: __init__.py:466
+msgid "&Browse..."
+msgstr "&استعراض..."
+
+#. Translators: The title of the dialog presented when browsing for the directory.
+#: __init__.py:468
+msgid "Select a directory"
+msgstr "اختر مجلدًا"
+
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: __init__.py:475
+msgid "&beep while converting"
+msgstr "&إصدار صوت أثناء التحويل"
+
+#. Translators: Checkbox name in the configuration dialog
+#: __init__.py:479
+msgid "&Write YoutTube description file"
+msgstr "&إنشاء ملف وصف فيديو يوتيوب"
+
+#. Translators: Checkbox name in the configuration dialog
+#: __init__.py:483
+msgid "Write &report file"
+msgstr "كتابة &ملف تقرير"
+
+#. Translator: Title of error dialog "Folder does not exist"
+#: __init__.py:494
+msgid "Error - Folder does not exist"
+msgstr "خطأ - المجلد غير موجود"
+
+#: __init__.py:497
+msgid ""
+"The folder ({folderPath}) does not exist.\n"
+"Please check the path or use the Browse button.\n"
+"The changes were not saved."
+msgstr ""
+"المجلد ({folderPath}) غير موجود.\n"
+"يرجى التحقق من المسار أو استخدام زر التصفح.\n"
+"لم يتم حفظ التغييرات."
+
+#. Translator: Title of error dialog "No write access to folder"
+#: __init__.py:512
+msgid "Error - No write access to folder"
+msgstr "خطأ - لا يمكن الإضافة إلى  المجلد"
+
+#: __init__.py:515
+msgid ""
+"No write access to folder {folderPath} (Code: {code})\n"
+"Please select a folder with write access.\n"
+"The changes were not saved."
+msgstr ""
+"لا توجد صلاحية الإضافة في المجلد {folderPath} (رمز: {code})\n"
+"يرجى اختيار مجلد قابل للكتابة.\n"
+"لم يتم حفظ التغييرات."
+
+#. Translators: The converting process will terminate by user
+#: __init__.py:558
+msgid "The converting process will terminate."
+msgstr "سيتم إنهاء عملية التحويل."
+
+#. Translators: Canceling process by user. No converting task active.
+#: __init__.py:568
+msgid "No converting task active."
+msgstr "لا توجد مهمة تحويل نشطة."
+
+#: __init__.py:606
+msgid "Save as MP3"
+msgstr "حفظ كـ MP3"
+
+#: __init__.py:613
+msgid "Save as MP4"
+msgstr "حفظ كـ MP4"
+
+#: __init__.py:620
+msgid "Open result folder"
+msgstr "فتح مجلد الملفات"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Audio Video Converter"
+msgstr "محول الصوت والفيديو"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+"the browser."
+msgstr ""
+"بستخدام هذه الإضافة، يمكنك تحميل فيديوهات يوتيوب أو أي ملفات ميديا تدعم "
+"الروابط المباشرة إلى mp3 أو mp4."
+
+#. Translators: Title of the window if an error occurred during unpacking.
+#: installTasks.py:64
+msgid "Attention - error when unpacking"
+msgstr "تحذير - خطأ أثناء فك الضغط"
+
+#: installTasks.py:67
+msgid ""
+"The file {file} could not be unpacked correctly in the folder {folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"تعذر فك ضغط الملف {file} بشكل صحيح في المجلد {folder}. \n"
+"جرب فك الضغط محليًا أو اتصل بمطور هذه الإضافة."
