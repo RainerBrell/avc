@@ -31,6 +31,11 @@
  *** 2024.06.24 
  - New yt-dlp.exe 
  
+  *** 2024.11.01
+  - New yt-dlp.exe 
+  - Arabic localization
+  - speakOnDemand = True 
+ 
  *** In Progress for future  *** 
  - The conversion process can be killed 
  - The Youtube downloader working in the background is automatically updated every 30 days 
@@ -607,21 +612,24 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	@script(
 		description=_("Save as MP3"),
-		gesture="kb:NVDA+y"
+		gesture="kb:NVDA+y",
+		speakOnDemand=True
 	)
 	def script_ConvertToMP3(self, gesture):
 		convertToMP("mp3", YouTubeAudio, OtherAudio)
 
 	@script(
 		description=_("Save as MP4"),
-		gesture="kb:NVDA+shift+y"
+		gesture="kb:NVDA+shift+y",
+		speakOnDemand=True
 	)
 	def script_YouTubeToMP4(self, gesture):
 		convertToMP("mp4", YouTubeVideo, OtherVideo)
 
 	@script(
 		description=_("Open result folder"),
-		gesture="kb:NVDA+control+y"
+		gesture="kb:NVDA+control+y",
+		speakOnDemand=True
 	)
 	def script_ResultFolder(self, gesture):
 		DownloadPath = getINI("ResultFolder")
