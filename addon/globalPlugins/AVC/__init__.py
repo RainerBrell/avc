@@ -35,22 +35,25 @@
   - New yt-dlp.exe 
   - Arabic localization
   - speakOnDemand = True 
+  *** 2025.04.22
+  - Look for a new yt-dlp.exe once every day
+  - Ready vor NVDA 2025.1 
  
  *** In Progress for future  *** 
  - The conversion process can be killed 
- - The Youtube downloader working in the background is automatically updated every 30 days 
  - convertion function into  windows explorer 
- 
- """
+  """
 
 import globalPluginHandler
 from scriptHandler import script
 import ui
 import urllib 
 import signal 
+import globalVars
 import gui
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 from gui import guiHelper
+from .skipTranslation import translate
 import wx 
 import tones 
 import config 
@@ -76,6 +79,7 @@ SoundPath        = AddOnPath + "\\sounds\\"
 AppData          = os.environ["APPDATA"]
 DownloadPath     = AppData + "\\AVC-Results"
 LogFile          = DownloadPath + "\\log.txt"
+LastUpdateFile   = DownloadPath + "\\LastUpdate.txt"
 YouTubeVideo     = DownloadPath + "\\YouTubeVideo\\"
 YouTubeAudio     = DownloadPath + "\\YouTubeAudio\\"
 OtherVideo       = DownloadPath + "\\Video\\"
@@ -84,6 +88,7 @@ YouTubeEXE       = AddOnPath + "\\Tools\\yt-dlp.exe"
 ConverterEXE     = AddOnPath + "\\Tools\\ffmpeg.exe"
 sectionName      = AddOnName 
 processID        = None 
+DelayAfterStart  = 120 # secounds 
 
 MultimediaExtensions= {
 	"aac", 
@@ -140,30 +145,113 @@ def initConfiguration():
 
 initConfiguration()
 
+def should_update():
+	"""
+		Check whether you want to update yt-dlp.exe.
+		A new update should be checked once a day.
+	"""
+	# Load the date of the last program start from a file
+	try:
+		with open(LastUpdateFile, "r") as file:
+			last_run_date = file.read().strip()
+	except FileNotFoundError:
+		last_run_date = None
+	# get Current date
+	current_date = datetime.datetime.now().date()
+	log(f"Current date: {current_date}, last date: {last_run_date}")
+	# Check whether the update was already carried out today
+	if last_run_date != str(current_date):
+		doUpdate = True 
+	else: 
+		doUpdate = False 
+	# Save the current date to the file
+	with open(LastUpdateFile, "w") as file:
+		file.write(str(current_date))
+	return doUpdate
+
+def is_online():
+	"""
+		Check if the system is online
+	"""
+	import socket
+	try:
+		# Try to connect to a known host (e.g. Google DNS)
+		socket.create_connection(("8.8.8.8", 53))
+		return True 
+	except OSError:
+		return False
+
+
+def update_YouTubeEXE():
+	"""
+		Runs an update of yt-dlp.exe in the background
+	"""
+	log("Try to update the yt-dlp.exe")
+	try:
+		cmd = YouTubeEXE
+		result = subprocess.run([cmd, "-U"], capture_output=True, text=True, creationflags=subprocess.CREATE_NO_WINDOW)
+		output = result.stdout
+		log(output)
+		return output
+	except Exception as e:
+		log(str(e))
+		return str(e)
+		
+def YouTubeExe_update():
+	"""
+		Hugo 
+	""" 
+	if is_online():
+		thread = threading.Thread(target=update_YouTubeEXE)
+		thread.start()
+		thread.join()
+		
+def CheckYouTubeEXE():
+	"""
+		If the system is online, it will look for a new yt-dlp.lexe when it is first started
+	"""
+	if is_online(): 
+			if should_update():
+				log(f"Search for a new yt-dlp.exe after {DelayAfterStart} seconds") 
+				timer_thread = threading.Timer(DelayAfterStart, YouTubeExe_update)
+				timer_thread.start()
+				
+def getActiveProfile ():
+	activeProfile = config.conf.profiles[-1].name
+	if not activeProfile:
+		# Message translated in NVDA core.
+		activeProfile = translate("normal configuration")
+	return activeProfile
+
 def getINI(key):
 	"""  get nvda.ini value """ 
 	value = config.conf[sectionName][key]
-	log("Get INI Key: " + sectionName + " " + key + " " + str(value))
+	log(f"Get {value} from key {key} of section {sectionName}")
 	return value 
 
 def setINI(key, value):
 	"""  set nvda.ini value """ 
 	try:
 		config.conf[sectionName][key] = value
-		log("Set INI Key: " + str(value))
+		log(f"set {value} to   key {key} of section {sectionName}")
 	except:
-		log("Error in setINI")
-		
+		log("Error when writing the ini")
+
 def log(s):
 	""" 
 		Write to log file 
 	""" 
 	if config.conf[sectionName]["Logging"]:
+		CurrentTime = datetime.datetime.now().time()
+		CurrentTime = CurrentTime.strftime("%H:%M:%S")
 		try:
 			s = makePrintable(s)
+			s = CurrentTime + ": " + s 
+			lines = s.splitlines()
 			log = open(LogFile, "a")
-			log.write(str(s))
-			log.write("\n")
+			for line in lines:
+				log.write(str(line))
+				log.write("\n")
 			log.close()
 		except:
 			pass
@@ -194,6 +282,7 @@ def createFolder(Folder):
 def CheckFolders():
 	global DownloadPath
 	global LogFile
+	global LastUpdateFile
 	global YouTubeVideo
 	global YouTubeAudio
 	global OtherVideo
@@ -201,6 +290,7 @@ def CheckFolders():
 	# set new global vars 
 	DownloadPath     = getINI("ResultFolder")
 	LogFile          = DownloadPath + "\\log.txt"
+	LastUpdateFile   = DownloadPath + "\\LastUpdate.txt"
 	YouTubeVideo     = DownloadPath + "\\YouTubeVideo\\"
 	YouTubeAudio     = DownloadPath + "\\YouTubeAudio\\"
 	OtherVideo       = DownloadPath + "\\Video\\"
@@ -381,8 +471,24 @@ def is32bitMachine():
 	except:
 		pass
 	return result
-
+	
 def checkWritePermissions(folderPath):
+	tempfile  = os.path.join(folderPath, 	"HierKommtDieMausUndDuBistAus.HugoUndErna")
+	"""
+		Checks whether the specified folder is writable.
+		This is not a good solution, but more reliable than that: os.access or os.stat
+		:param folderPath: Path to the folder you want to check.
+		:return: True, if the folder is writable, otherwise False.
+	"""
+	try:
+		with open(tempfile, "w") as f:
+			f.write("Hurra")
+		os.remove(tempfile)
+		return True 
+	except IOError:
+		return False
+		
+def checkWritePermissions_old(folderPath):
 	from stat import filemode 
 	"""
 		Checks whether the specified folder is writable.
@@ -598,9 +704,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def __init__(self):
 		super(globalPluginHandler.GlobalPlugin, self).__init__()
+		# if globalVars.appArgs.secure: return 
 		if getINI("ResultFolder") == "":
 			setINI("ResultFolder", DownloadPath) 
 		CheckFolders()
+		CheckYouTubeEXE()
 		# Add a section in NVDA configurations panel
 		NVDASettingsDialog.categoryClasses.append(AddOnPanel)
 
@@ -635,12 +743,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		DownloadPath = getINI("ResultFolder")
 		log("open the result folder: " + DownloadPath)
 		os.startfile(DownloadPath)
-
+		
 """
 	@script(
 		description="Only for test",
 		gesture="kb:NVDA+l"
 	)
 	def script_test(self, gesture):
-		pass
+		msg = getActiveProfile()
+		ui.message(str(msg)) 
 """

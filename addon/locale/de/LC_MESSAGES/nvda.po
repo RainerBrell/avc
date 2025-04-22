@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-18 09:10+0200\n"
-"PO-Revision-Date: 2024-04-18 09:23+0200\n"
+"PO-Revision-Date: 2025-04-22 19:06+0200\n"
 "Last-Translator: Rainer Brell <nvda@brell.net>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Translators: Could not create  folder.
 #: __init__.py:183
@@ -31,7 +31,7 @@ msgstr "Kein Browserfenster gefunden."
 #. Translators: No URL found in browser document, function terminate
 #: __init__.py:406
 msgid "Document URL not found - exit"
-msgstr "Seiten-URL nicht gefunden – Beenden."
+msgstr "Seiten-URL nicht gefunden – Beenden"
 
 #. Translators: save YouTube Video as MP3 or MP4
 #: __init__.py:417
