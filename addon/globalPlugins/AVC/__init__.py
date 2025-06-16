@@ -35,9 +35,10 @@
   - New yt-dlp.exe 
   - Arabic localization
   - speakOnDemand = True 
-  *** 2025.04.22
+  *** 2025.06.162
   - Look for a new yt-dlp.exe once every day
   - Ready vor NVDA 2025.1 
+  - more log informations 
  
  *** In Progress for future  *** 
  - The conversion process can be killed 

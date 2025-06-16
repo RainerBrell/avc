@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""Converts a YouTube video or a multimedia link to MP3 or MP4 directly from the browser."""),
 	# version
-	"addon_version": "2025.04.22",
+	"addon_version": "2025.06.16",
 	# Author(s)
 	"addon_author": "Rainer Brell <nvda@brell.net>",
 	# URL for the add-on documentation support
