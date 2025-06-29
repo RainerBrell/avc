@@ -4,11 +4,12 @@
  Audio Video Converter for NVDA 
  This file is covered by the GNU General Public License.
  See the file COPYING for more details.
- Copyright (C) 2022/2024 Rainer Brell nvda@brell.net 
+ Copyright (C) 2022/2025 Rainer Brell nvda@brell.net 
 
  *** 22. Nov 2022, Version 1.0
  NVDA+y         Converts to MP3 
  NVDA+shift+y   Converts to MP4
+ nvda+alt+y     Saves the subtitle of a YouTube video
  NVDA+Control+y opens the convert result folder 
  
  *** 19. Februar 2023, Version 1.1
@@ -35,10 +36,12 @@
   - New yt-dlp.exe 
   - Arabic localization
   - speakOnDemand = True 
-  *** 2025.06.162
+  *** 2025.06.16:
   - Look for a new yt-dlp.exe once every day
   - Ready vor NVDA 2025.1 
   - more log informations 
+  *** 2025.06.30:
+  - nvda+alt+y, Saves the subtitle of a YouTube video
  
  *** In Progress for future  *** 
  - The conversion process can be killed 
@@ -64,6 +67,7 @@ import api
 import os 
 import nvwave 
 import controlTypes
+import languageHandler
 import scriptHandler
 import subprocess
 import threading
@@ -74,6 +78,7 @@ addonHandler.initTranslation()
 
 AddOnSummary     = addonHandler.getCodeAddon().manifest['summary']
 AddOnName        = addonHandler.getCodeAddon().manifest['name']
+AddOnVersion     = addonHandler.getCodeAddon().manifest['version']
 AddOnPath        = os.path.dirname(__file__)
 ToolsPath        = AddOnPath + "\\Tools\\"
 SoundPath        = AddOnPath + "\\sounds\\"
@@ -85,6 +90,7 @@ YouTubeVideo     = DownloadPath + "\\YouTubeVideo\\"
 YouTubeAudio     = DownloadPath + "\\YouTubeAudio\\"
 OtherVideo       = DownloadPath + "\\Video\\"
 OtherAudio       = DownloadPath + "\\Audio\\"
+SubtitleFolder   = DownloadPath + "\\Subtitle\\"
 YouTubeEXE       = AddOnPath + "\\Tools\\yt-dlp.exe"
 ConverterEXE     = AddOnPath + "\\Tools\\ffmpeg.exe"
 sectionName      = AddOnName 
@@ -198,9 +204,77 @@ def update_YouTubeEXE():
 		log(str(e))
 		return str(e)
 		
+def convert_and_show_subtitle():
+	msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
+	#ui.message(msg) 
+	#ui.browseableMessage(msg, title=title, isHtml=False)
+
+def save_subtitle(cmd):
+	"""
+		Saves the subtitle in the background
+	"""
+	log("Save the subtitel")
+	log("Command: " + " ".join(cmd))
+	try:
+		result = subprocess.run(
+			cmd, 
+			capture_output=True, 
+			text=True, 
+			creationflags=subprocess.CREATE_NO_WINDOW
+		)
+		output = result.stdout
+		log("Returncode: " + str(self.p.returncode))
+		log("Returncode: " + str(result.returncode) )
+		log("Error     : " + str(result.stderr))
+		log("Output    : " + output)
+		timer_thread = threading.Timer(1, convert_and_show_subtitle)
+		timer_thread.start()
+	except Exception as e:
+		log(str(e))
+		
+def find_latest_srv1_file(directory_path):
+	"""
+	Find the most recently modified file with the .SRV1 extension
+	in a given directory. Returns the file path or None if none found.
+	"""
+	from pathlib import Path
+	path = Path(directory_path)
+	srv1_files = list(path.glob("*.SRV1"))
+	if not srv1_files:
+		return None  # No .SRV1 files found
+	# Sort by last modified time (mtime)
+	latest_file = max(srv1_files, key=lambda f: f.stat().st_mtime)
+	return latest_file
+	
+def extract_subtitles_as_text(srv1_file_path):
+	"""
+	Converts a .srv1 subtitle file to plain text and saves it as .txt
+	with the same base filename in the same directory.
+	:param srv1_file_path: Path to the input .srv1 file
+	returns the text content and the title of the file
+	Deletes the SRV1 file
+	"""
+	from xml.etree import ElementTree as ET
+	if not srv1_file_path: 
+			return 
+	try:
+		tree = ET.parse(srv1_file_path)
+		root = tree.getroot()
+		lines = [node.text for node in root.iter("text") if node.text]
+		txt_file_path = os.path.splitext(srv1_file_path)[0] + ".txt"
+		with open(txt_file_path, "w", encoding="utf-8") as out:
+			out.write("\n".join(lines))
+		log(f"Transcript saved under: {txt_file_path}")
+		filename = os.path.splitext(os.path.basename(txt_file_path))[0]
+		os.remove(srv1_file_path)
+		return "\n".join(lines), filename
+	except ET.ParseError as e:
+		log(f"Error when parsing the XML file: {e}")
+		return None 
+
 def YouTubeExe_update():
 	"""
-		Hugo 
+		Updated to the latest version of the YouTube downloader
 	""" 
 	if is_online():
 		thread = threading.Thread(target=update_YouTubeEXE)
@@ -209,7 +283,7 @@ def YouTubeExe_update():
 		
 def CheckYouTubeEXE():
 	"""
-		If the system is online, it will look for a new yt-dlp.lexe when it is first started
+		If the system is online, it will look for a new yt-dlp.exe when it is first started
 	"""
 	if is_online(): 
 			if should_update():
@@ -288,6 +362,7 @@ def CheckFolders():
 	global YouTubeAudio
 	global OtherVideo
 	global OtherAudio
+	global SubtitleFolder
 	# set new global vars 
 	DownloadPath     = getINI("ResultFolder")
 	LogFile          = DownloadPath + "\\log.txt"
@@ -296,12 +371,14 @@ def CheckFolders():
 	YouTubeAudio     = DownloadPath + "\\YouTubeAudio\\"
 	OtherVideo       = DownloadPath + "\\Video\\"
 	OtherAudio       = DownloadPath + "\\Audio\\"
+	SubtitleFolder   = DownloadPath + "\\Subtitle\\"
 	# create folders 
 	createFolder(DownloadPath)
 	createFolder(YouTubeVideo)
 	createFolder(YouTubeAudio)
 	createFolder(OtherAudio)
 	createFolder(OtherVideo)
+	createFolder(SubtitleFolder)
 
 def getCurrentAppName():
 	Name = "Emty"
@@ -635,6 +712,35 @@ class AddOnPanel(SettingsPanel):
 
 	def onChk(self, event):
 		pass 
+		
+class SubtitleThread(threading.Thread):
+
+	def __init__(self, cmd, path):
+		super().__init__()
+		self.cmd = cmd 
+		self.Path = path 
+
+	def run(self):
+		log("Save the subtitel")
+		log("Command: " + " ".join(self.cmd))
+		# Si - Process should run in the background
+		si = subprocess.STARTUPINFO()
+		si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+		self.p = subprocess.Popen(
+			self.cmd, 
+			cwd=self.Path, 
+			stdin=subprocess.PIPE, 
+			stdout=subprocess.PIPE, 
+			stderr=subprocess.PIPE, 
+			startupinfo=si, 
+			encoding="unicode_escape"
+		)
+		output = self.p.stdout
+		log("Returncode: " + str(self.p.returncode))
+		log("Error     : " + str(self.p.stderr))
+		log("Output    : " + str(output))
+		self.p.wait() 
+		msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
 
 class converterThread(threading.Thread):
 
@@ -709,6 +815,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if getINI("ResultFolder") == "":
 			setINI("ResultFolder", DownloadPath) 
 		CheckFolders()
+		log("AVC Version: " + AddOnVersion)
 		CheckYouTubeEXE()
 		# Add a section in NVDA configurations panel
 		NVDASettingsDialog.categoryClasses.append(AddOnPanel)
@@ -745,12 +852,60 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		log("open the result folder: " + DownloadPath)
 		os.startfile(DownloadPath)
 		
+	@script(
+		description=_("Saves the subtitle of a YouTube video"),
+		gesture="kb:NVDA+alt+y",
+		speakOnDemand=True
+	)
+	def script_SaveSubTitle(self, gesture):
+		CurrentLanguage   = languageHandler.getLanguage()[:2]
+		LocalizedLanguage = languageHandler.getLanguageDescription(CurrentLanguage)
+		log("Current language: " + LocalizedLanguage)
+		if not isBrowser():
+				return 
+		URL                = getCurrentDocumentURL() 			
+		validYouTubeURL    = True
+		if not URL:
+			# Translators: No URL found in browser document, function terminate 
+			ui.message(_("Document URL not found - exit"))
+			return
+		elif URL.find(".youtube.") == -1:
+			log("invalid YouTube URL") 
+			validYouTubeURL = False 
+		if validYouTubeURL:
+			Title = getWebSiteTitle() 
+			log(Title) 
+			# Translators: Save the subtitle in the specified language
+			ui.message(_("Save subtitle in {language}").format(language=LocalizedLanguage))
+			cmd = [
+				YouTubeEXE, 
+				"--write-auto-sub", 
+				"--sub-langs", 
+				CurrentLanguage, 
+				"--skip-download", 
+				"--sub-format", "srv1", 
+				"--paths", SubtitleFolder, 
+				"--output", "%(title)s.%(ext)s",
+				URL
+			]
+			SubtThread = SubtitleThread(cmd, SubtitleFolder)
+			Wait = WaitThread(SubtThread)
+			Wait.start() 
+			#SubtitleThread = threading.Thread(target=save_subtitle, args=(cmd,))
+			#SubtitleThread.start()
+			#SubtitleThread.join()
+		else:
+			log("No YouTube Video Link found")
+			# Translators: No YouTube video link found
+			ui.message(_("No YouTube video link found"))
 """
 	@script(
 		description="Only for test",
 		gesture="kb:NVDA+l"
 	)
 	def script_test(self, gesture):
-		msg = getActiveProfile()
+		#msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
+		#ui.browseableMessage(msg, title=title, isHtml=False)
+		msg = "Hugo" 
 		ui.message(str(msg)) 
 """

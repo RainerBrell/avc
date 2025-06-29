@@ -23,9 +23,14 @@ addon_info = {
 	"addon_summary": _("Audio Video Converter"),
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-	"addon_description": _("""Converts a YouTube video or a multimedia link to MP3 or MP4 directly from the browser."""),
+	"addon_description": _("""Converts a YouTube video or a multimedia link to MP3 or MP4 directly from the browser:
+	NVDA+y, Converts the current video to MP3
+	NVDA+Shift+y, Converts the current video to MP4
+	NVDA+Control+y, Opens the folder with the converted files
+	NVDA+Alt+y, Saves the subtitle of the video as text."""
+		),
 	# version
-	"addon_version": "2025.06.16",
+	"addon_version": "2025.06.30",
 	# Author(s)
 	"addon_author": "Rainer Brell <nvda@brell.net>",
 	# URL for the add-on documentation support

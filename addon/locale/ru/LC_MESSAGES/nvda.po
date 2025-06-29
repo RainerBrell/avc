@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AVC\n"
-"POT-Creation-Date: 2024-05-06 11:33+0700\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2025-06-29 20:26+0200\n"
 "PO-Revision-Date: 2024-05-06 13:55+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,63 +18,90 @@ msgstr ""
 "X-Poedit-SearchPath-0: globalPlugins\n"
 "X-Poedit-SearchPath-1: installTasks.py\n"
 
-#: globalPlugins/AVC/__init__.py:183
+#. Translators: Title of the window if an error occurred during unpacking.
+#: addon\installTasks.py:63
+msgid "Attention - error when unpacking"
+msgstr "Внимание - ошибка при распаковке"
+
+#: addon\installTasks.py:66
+#, python-brace-format
+msgid ""
+"The file {file} could not be unpacked correctly in the folder {folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"Файл {file} не удалось корректно распаковать в папку {folder}. \n"
+"Попробуйте сами локально или свяжитесь с автором этого расширения."
+
+#. Translators: Could not create  folder.
+#: addon\globalPlugins\AVC\__init__.py:354
 msgid "Error - can not create folder"
 msgstr "Ошибка - невозможно создать папку"
 
-#: globalPlugins/AVC/__init__.py:232
+#. Translators: The user is not in a browser.
+#: addon\globalPlugins\AVC\__init__.py:408
 msgid "No browser window found"
 msgstr "Окно браузера не обнаружено"
 
-#: globalPlugins/AVC/__init__.py:406
-#| msgid "URL not found"
+#. Translators: No URL found in browser document, function terminate
+#: addon\globalPlugins\AVC\__init__.py:598
+#: addon\globalPlugins\AVC\__init__.py:870
 msgid "Document URL not found - exit"
 msgstr "URL адрес документа не обнаружен – Выход"
 
-#: globalPlugins/AVC/__init__.py:417
+#. Translators: save YouTube Video as MP3 or MP4
+#: addon\globalPlugins\AVC\__init__.py:609
 #, python-brace-format
 msgid "Save YouTube Video as {MultimediaFormat}"
 msgstr "Сохранить видео YouTube как {MultimediaFormat}"
 
-#: globalPlugins/AVC/__init__.py:444
+#. Translators: save multimedia link  as MP3 or MP4
+#: addon\globalPlugins\AVC\__init__.py:636
 #, python-brace-format
 msgid "Save link as {MultimediaFormat}"
 msgstr "Сохранить ссылку как {MultimediaFormat}"
 
-#: globalPlugins/AVC/__init__.py:451
+#. Translators: No YouTube video and no multimedia link found
+#: addon\globalPlugins\AVC\__init__.py:643
 msgid "No YouTube video and no multimedia link found"
 msgstr "Видео на You Tube и мультимедийная ссылка не найдены"
 
-#: globalPlugins/AVC/__init__.py:461
-#| msgid "Open result folder"
+#. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
+#. Translators: This is a label for an edit field in the AVC Settings panel.
+#: addon\globalPlugins\AVC\__init__.py:653
 msgid "Result folder"
 msgstr "Папка с результатами"
 
-#: globalPlugins/AVC/__init__.py:466
+#. Translators: The label of a button to browse for a directory
+#: addon\globalPlugins\AVC\__init__.py:658
 msgid "&Browse..."
 msgstr "&Обзор..."
 
-#: globalPlugins/AVC/__init__.py:468
+#. Translators: The title of the dialog presented when browsing for the directory.
+#: addon\globalPlugins\AVC\__init__.py:660
 msgid "Select a directory"
 msgstr "Выбрать папку"
 
-#: globalPlugins/AVC/__init__.py:475
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:667
 msgid "&beep while converting"
 msgstr "&звуковой сигнал при конвертации"
 
-#: globalPlugins/AVC/__init__.py:479
+#. Translators: Checkbox name in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:671
 msgid "&Write YoutTube description file"
 msgstr "&Запись описания YouTube в файл"
 
-#: globalPlugins/AVC/__init__.py:483
+#. Translators: Checkbox name in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:675
 msgid "Write &report file"
 msgstr "&Запись отчета в файл"
 
-#: globalPlugins/AVC/__init__.py:494
+#. Translator: Title of error dialog "Folder does not exist"
+#: addon\globalPlugins\AVC\__init__.py:686
 msgid "Error - Folder does not exist"
 msgstr "Ошибка - папка не существует"
 
-#: globalPlugins/AVC/__init__.py:497
+#: addon\globalPlugins\AVC\__init__.py:689
 #, python-brace-format
 msgid ""
 "The folder ({folderPath}) does not exist.\n"
@@ -84,11 +112,12 @@ msgstr ""
 "Пожалуйста, проверьте путь или воспользуйтесь кнопкой Обзор.\n"
 "Изменения не сохранились."
 
-#: globalPlugins/AVC/__init__.py:512
+#. Translator: Title of error dialog "No write access to folder"
+#: addon\globalPlugins\AVC\__init__.py:704
 msgid "Error - No write access to folder"
 msgstr "Ошибка - недоступен результат в папке"
 
-#: globalPlugins/AVC/__init__.py:515
+#: addon\globalPlugins\AVC\__init__.py:707
 #, python-brace-format
 msgid ""
 "No write access to folder {folderPath} (Code: {code})\n"
@@ -99,45 +128,65 @@ msgstr ""
 "Пожалуйста, выберите папку с доступом к результатам.\n"
 "Изменения не сохранились."
 
-#: globalPlugins/AVC/__init__.py:558
+#. Translators: The converting process will terminate by user
+#: addon\globalPlugins\AVC\__init__.py:779
 msgid "The converting process will terminate."
 msgstr "Процесс конвертации завершится."
 
-#: globalPlugins/AVC/__init__.py:568
+#. Translators: Canceling process by user. No converting task active.
+#: addon\globalPlugins\AVC\__init__.py:789
 msgid "No converting task active."
 msgstr "Нет активной задачи преобразования."
 
-#: globalPlugins/AVC/__init__.py:606
+#: addon\globalPlugins\AVC\__init__.py:830
 msgid "Save as MP3"
 msgstr "Сохранить как MP3"
 
-#: globalPlugins/AVC/__init__.py:613
+#: addon\globalPlugins\AVC\__init__.py:838
 msgid "Save as MP4"
 msgstr "Сохранить как MP4"
 
-#: globalPlugins/AVC/__init__.py:620
+#: addon\globalPlugins\AVC\__init__.py:846
 msgid "Open result folder"
 msgstr "Открыть папку с результатами"
 
-#: installTasks.py:63
-msgid "Attention - error when unpacking"
-msgstr "Внимание - ошибка при распаковке"
-
-#: installTasks.py:66
-#, python-brace-format
-msgid ""
-"The file {file} could not be unpacked correctly in the folder "
-"{folder}. \n"
-"Try it yourself locally or contact the author of this extension."
+#: addon\globalPlugins\AVC\__init__.py:856
+msgid "Saves the subtitle of a YouTube video"
 msgstr ""
-"Файл {file} не удалось корректно распаковать в папку {folder}. \n"
-"Попробуйте сами локально или свяжитесь с автором этого расширения."
+
+#. Translators: Save the subtitle in the specified language
+#: addon\globalPlugins\AVC\__init__.py:879
+#, python-brace-format
+msgid "Save subtitle in {language}"
+msgstr ""
+
+#. Translators: No YouTube video link found
+#: addon\globalPlugins\AVC\__init__.py:900
+#, fuzzy
+msgid "No YouTube video link found"
+msgstr "Видео на You Tube и мультимедийная ссылка не найдены"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Audio Video Converter"
+msgstr "Конвертер аудио-видео"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+"the browser:\n"
+"\tNVDA+y, Converts the current video to MP3\n"
+"\tNVDA+Shift+y, Converts the current video to MP4\n"
+"\tNVDA+Control+y, Opens the folder with the converted files\n"
+"\tNVDA+Alt+y, Saves the subtitle of the video as text."
+msgstr ""
 
 #~ msgid "Invalid YouTube URL "
 #~ msgstr "Неверный URL-адрес YouTube "
-
-#~ msgid "Audio Video Converter"
-#~ msgstr "Конвертер аудио-видео"
 
 #~ msgid "Download YoutTube to MP3"
 #~ msgstr "Скачать YouTube в MP3"
