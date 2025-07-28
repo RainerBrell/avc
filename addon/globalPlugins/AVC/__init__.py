@@ -45,7 +45,9 @@
  
  *** In Progress for future  *** 
  - The conversion process can be killed 
- - convertion function into  windows explorer 
+ - Function for conversion into  windows explorer 
+ - Password-protected access to YouTube videos
+ - Audio export from the video container
   """
 
 import globalPluginHandler
@@ -65,6 +67,7 @@ import datetime
 import time 
 import api
 import os 
+import core 
 import nvwave 
 import controlTypes
 import languageHandler
@@ -96,6 +99,7 @@ ConverterEXE     = AddOnPath + "\\Tools\\ffmpeg.exe"
 sectionName      = AddOnName 
 processID        = None 
 DelayAfterStart  = 120 # secounds 
+ShortLanguage = languageHandler.getLanguage()[:2]
 
 MultimediaExtensions= {
 	"aac", 
@@ -131,6 +135,7 @@ MultimediaExtensions= {
 invalidCharactersForFilename = [
 	"/",
 	"\\",
+	"\"",
 	":",
 	"*",
 	"<",
@@ -146,6 +151,10 @@ def initConfiguration():
 		"CheckYouTubeDownloaderUpdate": "boolean(default=True)",
 		"ResultFolder":                 "string(default='')",
 		"YouTubeDescription":           "boolean(default=True)",
+		"YouTubePlaylist":              "boolean(default=False)",
+		"YouTubeChannel":               "boolean(default=False)",
+		"YouTubeSubtitle":              "boolean(default=False)",
+		"SubtitleLanguage":             f"string(default='{ShortLanguage}')",
 		"Logging":                      "boolean(default=False)"
 	}
 	config.conf.spec[sectionName] = confspec
@@ -527,11 +536,9 @@ def validFilename(s):
 		returns a valid file name 
 	"""
 	result = ""
-	l      = len(s) 
-	for i in range(l):
-		c = s[i]
+	for c in s:
 		if c in invalidCharactersForFilename:
-			result = result + " "
+			result = result + ""
 		else:
 			result = result + c
 	return result 
@@ -611,7 +618,17 @@ def convertToMP(mpFormat, YouTubePath, OtherPath):
 			cmd = [YouTubeEXE, "-x", "--audio-format", str(mpFormat), "--audio-quality", "0", "-o", "%(title)s.%(ext)s", URL]
 		else: # if mp4 
 			cmd = [YouTubeEXE, "-f", str(mpFormat), "-o", "%(title)s.%(ext)s", URL]
-		if getINI("YouTubeDescription"): cmd.insert(1, "--write-description")
+		if getINI("YouTubeDescription"): cmd.insert(-1, "--write-description")
+		if getINI("YouTubeSubtitle"): 
+				cmd.insert(-1, "--write-auto-sub")
+				cmd.insert(-1, "--sub-langs")
+				cmd.insert(-1, "DE")
+				cmd.insert(-1, "--sub-format")
+				cmd.insert(-1, "srv1")
+		if not getINI("YouTubeChannel"): 
+				cmd.insert(-1, "--max-downloads")
+				cmd.insert(-1, "1")
+		if not getINI("YouTubePlaylist"): cmd.insert(-1, "--no-playlist")
 		ytThread = converterThread(cmd, YouTubePath)
 		Wait = WaitThread(ytThread)
 		Wait.start() 
@@ -631,7 +648,7 @@ def convertToMP(mpFormat, YouTubePath, OtherPath):
 				multimediaLinkURL  = getLinkURL()
 				multimediaLinkName = getLinkName() + "." + str(mpFormat)
 				cmd = [ConverterEXE, "-i", multimediaLinkURL, "-y", multimediaLinkName]
-				log("cmd: " + str(cmd))
+				log("cmd: " + str(" ".join(cmd)))
 				# Translators: save multimedia link  as MP3 or MP4
 				ui.message(_("Save link as {MultimediaFormat}").format(MultimediaFormat=mpFormat))
 				multimediaThread = converterThread(cmd, OtherPath)
@@ -667,11 +684,28 @@ class AddOnPanel(SettingsPanel):
 		self.BeepConvertingChk = helper.addItem(wx.CheckBox(self, label=_("&beep while converting")))
 		self.BeepConvertingChk.Bind(wx.EVT_CHECKBOX, self.onChk)
 		self.BeepConvertingChk.Value = getINI("BeepWhileConverting")
-		# Translators: Checkbox name in the configuration dialog
+		
+		# Translators: Checkbox name in the configuration dialog  for video description 
 		self.YouTubeDescriptionChk = helper.addItem(wx.CheckBox(self, label=_("&Write YoutTube description file")))
 		self.YouTubeDescriptionChk.Bind(wx.EVT_CHECKBOX, self.onChk)
 		self.YouTubeDescriptionChk.Value = getINI("YouTubeDescription")
-		# Translators: Checkbox name in the configuration dialog
+		
+		# Translators: Checkbox name in the configuration dialog  for youtube subtitle 
+		#self.YouTubeSubtitleChk = helper.addItem(wx.CheckBox(self, label=_("Always generate youtube &subtitle (needs more time)")))
+		#self.YouTubeSubtitleChk.Bind(wx.EVT_CHECKBOX, self.onChk)
+		#self.YouTubeSubtitleChk.Value = getINI("YouTubeSubtitle")
+		
+		# Translators: Checkbox name in the configuration dialog  for youtube Playlist 
+		self.YouTubePlaylistChk = helper.addItem(wx.CheckBox(self, label=_("Download the &play list completely")))
+		self.YouTubePlaylistChk.Bind(wx.EVT_CHECKBOX, self.onChk)
+		self.YouTubePlaylistChk.Value = getINI("YouTubePlaylist")
+		
+		# Translators: Checkbox name in the configuration dialog  for youtube Channel 
+		self.YouTubeChannelChk = helper.addItem(wx.CheckBox(self, label=_("Download the &channel completely")))
+		self.YouTubeChannelChk.Bind(wx.EVT_CHECKBOX, self.onChk)
+		self.YouTubeChannelChk.Value = getINI("YouTubeChannel")
+
+ 		# Translators: Checkbox name in the configuration dialog for AVC logging 
 		self.LoggingChk = helper.addItem(wx.CheckBox(self, label=_("Write &report file")))
 		self.LoggingChk.Bind(wx.EVT_CHECKBOX, self.onChk)
 		self.LoggingChk.Value = getINI("Logging")
@@ -695,6 +729,9 @@ class AddOnPanel(SettingsPanel):
 			if checkWritePermissions(folder):
 				setINI("BeepWhileConverting", bool(self.BeepConvertingChk.Value))
 				setINI("YouTubeDescription",  bool(self.YouTubeDescriptionChk.Value))
+				#setINI("YouTubeSubtitle",  bool(self.YouTubeSubtitleChk.Value))
+				setINI("YouTubePlaylist",  bool(self.YouTubePlaylistChk.Value))
+				setINI("YouTubeChannel",  bool(self.YouTubeChannelChk.Value))
 				setINI("Logging",             bool(self.LoggingChk.Value))
 				setINI("ResultFolder",        folder)
 				CheckFolders()
@@ -712,12 +749,12 @@ class AddOnPanel(SettingsPanel):
 
 	def onChk(self, event):
 		pass 
-		
+
 class SubtitleThread(threading.Thread):
 
 	def __init__(self, cmd, path):
 		super().__init__()
-		self.cmd = cmd 
+		self.cmd  = cmd 
 		self.Path = path 
 
 	def run(self):
@@ -739,6 +776,16 @@ class SubtitleThread(threading.Thread):
 		log("Returncode: " + str(self.p.returncode))
 		log("Error     : " + str(self.p.stderr))
 		log("Output    : " + str(output))
+		log("**** neu ***")
+		# Lies stdout und stderr komplett
+		stdout_data, stderr_data = self.p.communicate()
+		log("Returncode: " + str(self.p.returncode))
+		log("Error     :")
+		for line in stderr_data.splitlines():
+			log(line)
+		og("Output    :")
+		for line in stdout_data.splitlines():
+			log(line)
 		self.p.wait() 
 		msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
 
@@ -808,7 +855,7 @@ class WaitThread(threading.Thread):
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = AddOnSummary
-	
+
 	def __init__(self):
 		super(globalPluginHandler.GlobalPlugin, self).__init__()
 		# if globalVars.appArgs.secure: return 
@@ -858,12 +905,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		speakOnDemand=True
 	)
 	def script_SaveSubTitle(self, gesture):
-		CurrentLanguage   = languageHandler.getLanguage()[:2]
+		CurrentLanguage   = getINI("SubtitleLanguage")
 		LocalizedLanguage = languageHandler.getLanguageDescription(CurrentLanguage)
 		log("Current language: " + LocalizedLanguage)
 		if not isBrowser():
 				return 
-		URL                = getCurrentDocumentURL() 			
+		URL                = getCurrentDocumentURL()
 		validYouTubeURL    = True
 		if not URL:
 			# Translators: No URL found in browser document, function terminate 
@@ -898,14 +945,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			log("No YouTube Video Link found")
 			# Translators: No YouTube video link found
 			ui.message(_("No YouTube video link found"))
-"""
+
 	@script(
 		description="Only for test",
 		gesture="kb:NVDA+l"
 	)
 	def script_test(self, gesture):
-		#msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
-		#ui.browseableMessage(msg, title=title, isHtml=False)
-		msg = "Hugo" 
-		ui.message(str(msg)) 
-"""
+		msg = "Hugo"
+		ui.message(msg) 
+		

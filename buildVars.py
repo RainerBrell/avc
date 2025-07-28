@@ -30,7 +30,7 @@ addon_info = {
 	NVDA+Alt+y, Saves the subtitle of the video as text."""
 		),
 	# version
-	"addon_version": "2025.06.30",
+	"addon_version": "2025.07.28",
 	# Author(s)
 	"addon_author": "Rainer Brell <nvda@brell.net>",
 	# URL for the add-on documentation support
