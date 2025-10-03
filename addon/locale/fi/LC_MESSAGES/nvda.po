@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 'AVC' '2024.04.26'\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2025-06-16 20:12+0300\n"
+"PO-Revision-Date: 2025-09-22 17:50+0300\n"
+"Last-Translator: Jani Kinnunen <janikinnunen340@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#. Translators: Title of the window if an error occurred during unpacking.
+#: addon\installTasks.py:63
+msgid "Attention - error when unpacking"
+msgstr "Huomio: virhe purettaessa pakettia"
+
+#: addon\installTasks.py:66
+msgid ""
+"The file {file} could not be unpacked correctly in the folder {folder}. \n"
+"Try it yourself locally or contact the author of this extension."
+msgstr ""
+"Tiedostoa {file} ei voitu purkaa oikein kansiossa {folder}. \n"
+"Yritä purkaa se itse tai ota yhteyttä tämän lisäosan tekijään."
+
+#. Translators: Could not create  folder.
+#: addon\globalPlugins\AVC\__init__.py:280
+msgid "Error - can not create folder"
+msgstr "Virhe: kansiota ei voi luoda"
+
+#. Translators: The user is not in a browser.
+#: addon\globalPlugins\AVC\__init__.py:331
+msgid "No browser window found"
+msgstr "Selainikkunaa ei löydy"
+
+#. Translators: No URL found in browser document, function terminate
+#: addon\globalPlugins\AVC\__init__.py:521
+msgid "Document URL not found - exit"
+msgstr "Dokumentin URL-osoitetta ei löydy. Suljetaan."
+
+#. Translators: save YouTube Video as MP3 or MP4
+#: addon\globalPlugins\AVC\__init__.py:532
+msgid "Save YouTube Video as {MultimediaFormat}"
+msgstr "Tallenna YouTube-video {MultimediaFormat}-muodossa"
+
+#. Translators: save multimedia link  as MP3 or MP4
+#: addon\globalPlugins\AVC\__init__.py:559
+msgid "Save link as {MultimediaFormat}"
+msgstr "Tallenna linkki {MultimediaFormat}-muodossa"
+
+#. Translators: No YouTube video and no multimedia link found
+#: addon\globalPlugins\AVC\__init__.py:566
+msgid "No YouTube video and no multimedia link found"
+msgstr "YouTube-videota tai medialinkkiä ei löydy"
+
+#. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
+#. Translators: This is a label for an edit field in the AVC Settings panel.
+#: addon\globalPlugins\AVC\__init__.py:576
+msgid "Result folder"
+msgstr "Kohdekansio"
+
+#. Translators: The label of a button to browse for a directory
+#: addon\globalPlugins\AVC\__init__.py:581
+msgid "&Browse..."
+msgstr "&Selaa..."
+
+#. Translators: The title of the dialog presented when browsing for the directory.
+#: addon\globalPlugins\AVC\__init__.py:583
+msgid "Select a directory"
+msgstr "Valitse kansio"
+
+#. Translators: Checkbox name for sound signal feedback in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:590
+msgid "&beep while converting"
+msgstr "&Anna merkkiääni muunnoksen aikana"
+
+#. Translators: Checkbox name in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:594
+msgid "&Write YoutTube description file"
+msgstr "&Tallenna YouTube-kuvaustiedosto"
+
+#. Translators: Checkbox name in the configuration dialog
+#: addon\globalPlugins\AVC\__init__.py:598
+msgid "Write &report file"
+msgstr "Tallenna rap&orttitiedosto"
+
+#. Translator: Title of error dialog "Folder does not exist"
+#: addon\globalPlugins\AVC\__init__.py:609
+msgid "Error - Folder does not exist"
+msgstr "Virhe: kansiota ei ole olemassa"
+
+#: addon\globalPlugins\AVC\__init__.py:612
+msgid ""
+"The folder ({folderPath}) does not exist.\n"
+"Please check the path or use the Browse button.\n"
+"The changes were not saved."
+msgstr ""
+"kansiota {folderPath} ei ole olemassa.\n"
+"Tarkista polku tai käytä Selaa-painiketta.\n"
+"Muutoksia ei tallennettu."
+
+#. Translator: Title of error dialog "No write access to folder"
+#: addon\globalPlugins\AVC\__init__.py:627
+msgid "Error - No write access to folder"
+msgstr "Virhe: kansioon ei ole kirjoitusoikeuksia"
+
+#: addon\globalPlugins\AVC\__init__.py:630
+msgid ""
+"No write access to folder {folderPath} (Code: {code})\n"
+"Please select a folder with write access.\n"
+"The changes were not saved."
+msgstr ""
+"Ei kirjoitusoikeuksia kansioon {folderPath} (koodi: {code})\n"
+"Valitse kansio, johon on kirjoitusoikeudet.\n"
+"Muutoksia ei tallennettu."
+
+#. Translators: The converting process will terminate by user
+#: addon\globalPlugins\AVC\__init__.py:673
+msgid "The converting process will terminate."
+msgstr "Muunnos keskeytetään."
+
+#. Translators: Canceling process by user. No converting task active.
+#: addon\globalPlugins\AVC\__init__.py:683
+msgid "No converting task active."
+msgstr "Ei muunnostehtävää aktiivisena."
+
+#: addon\globalPlugins\AVC\__init__.py:723
+msgid "Save as MP3"
+msgstr "Tallenna MP3-muodossa"
+
+#: addon\globalPlugins\AVC\__init__.py:731
+msgid "Save as MP4"
+msgstr "Tallenna MP4-muodossa"
+
+#: addon\globalPlugins\AVC\__init__.py:739
+msgid "Open result folder"
+msgstr "Avaa kohdekansio"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Audio Video Converter"
+msgstr "Ääni- ja videomuunnin"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+"the browser."
+msgstr ""
+"Muuntaa YouTube-videon tai muun medialinkin MP3- tai MP4-muotoon suoraan "
+"selaimesta."
