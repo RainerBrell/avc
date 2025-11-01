@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2025-07-27 19:46+0200\n"
-"PO-Revision-Date: 2025-07-28 05:35+0200\n"
+"POT-Creation-Date: 2025-11-01 11:20+0100\n"
+"PO-Revision-Date: 2025-11-01 11:43+0100\n"
 "Last-Translator: Rainer Brell <nvda@brell.net>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Translators: Title of the window if an error occurred during unpacking.
 #: addon\installTasks.py:63
@@ -34,61 +34,61 @@ msgstr ""
 "Erweiterung."
 
 #. Translators: Could not create  folder.
-#: addon\globalPlugins\AVC\__init__.py:363
+#: addon\globalPlugins\AVC\__init__.py:542
 msgid "Error - can not create folder"
 msgstr "Fehler – Ordner kann nicht erstellt werden"
 
 #. Translators: The user is not in a browser.
-#: addon\globalPlugins\AVC\__init__.py:417
+#: addon\globalPlugins\AVC\__init__.py:596
 msgid "No browser window found"
 msgstr "Kein Browserfenster gefunden."
 
 #. Translators: No URL found in browser document, function terminate
-#: addon\globalPlugins\AVC\__init__.py:605
-#: addon\globalPlugins\AVC\__init__.py:917
+#: addon\globalPlugins\AVC\__init__.py:784
+#: addon\globalPlugins\AVC\__init__.py:1129
 msgid "Document URL not found - exit"
 msgstr "Seiten-URL nicht gefunden – Beenden"
 
 #. Translators: save YouTube Video as MP3 or MP4
-#: addon\globalPlugins\AVC\__init__.py:616
+#: addon\globalPlugins\AVC\__init__.py:795
 #, python-brace-format
 msgid "Save YouTube Video as {MultimediaFormat}"
 msgstr "YouTube-Video speichern als {MultimediaFormat}."
 
 #. Translators: save multimedia link  as MP3 or MP4
-#: addon\globalPlugins\AVC\__init__.py:653
+#: addon\globalPlugins\AVC\__init__.py:830
 #, python-brace-format
 msgid "Save link as {MultimediaFormat}"
 msgstr "Link speichern als {MultimediaFormat}."
 
 #. Translators: No YouTube video and no multimedia link found
-#: addon\globalPlugins\AVC\__init__.py:660
+#: addon\globalPlugins\AVC\__init__.py:837
 msgid "No YouTube video and no multimedia link found"
 msgstr "Kein YouTube-Video und kein Multimedia-Link gefunden."
 
 #. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
 #. Translators: This is a label for an edit field in the AVC Settings panel.
-#: addon\globalPlugins\AVC\__init__.py:670
+#: addon\globalPlugins\AVC\__init__.py:847
 msgid "Result folder"
 msgstr "Ergebnisordner"
 
 #. Translators: The label of a button to browse for a directory
-#: addon\globalPlugins\AVC\__init__.py:675
+#: addon\globalPlugins\AVC\__init__.py:852
 msgid "&Browse..."
 msgstr "D&urchsuchen..."
 
 #. Translators: The title of the dialog presented when browsing for the directory.
-#: addon\globalPlugins\AVC\__init__.py:677
+#: addon\globalPlugins\AVC\__init__.py:854
 msgid "Select a directory"
 msgstr "Wählen Sie ein Verzeichnis aus"
 
 #. Translators: Checkbox name for sound signal feedback in the configuration dialog
-#: addon\globalPlugins\AVC\__init__.py:684
+#: addon\globalPlugins\AVC\__init__.py:861
 msgid "&beep while converting"
 msgstr "Signal&ton während der Konvertierung"
 
 #. Translators: Checkbox name in the configuration dialog  for video description
-#: addon\globalPlugins\AVC\__init__.py:689
+#: addon\globalPlugins\AVC\__init__.py:866
 msgid "&Write YoutTube description file"
 msgstr "YouTube-Beschreibungsdatei &erstellen"
 
@@ -97,26 +97,31 @@ msgstr "YouTube-Beschreibungsdatei &erstellen"
 #. self.YouTubeSubtitleChk.Bind(wx.EVT_CHECKBOX, self.onChk)
 #. self.YouTubeSubtitleChk.Value = getINI("YouTubeSubtitle")
 #. Translators: Checkbox name in the configuration dialog  for youtube Playlist
-#: addon\globalPlugins\AVC\__init__.py:699
+#: addon\globalPlugins\AVC\__init__.py:876
 msgid "Download the &play list completely"
 msgstr "YouTube-&Widergabeliste komplett laden"
 
 #. Translators: Checkbox name in the configuration dialog  for youtube Channel
-#: addon\globalPlugins\AVC\__init__.py:704
+#: addon\globalPlugins\AVC\__init__.py:881
 msgid "Download the &channel completely"
 msgstr "YouTube-&Kanal komplett laden"
 
+#. Translators: label for selecting the language for the subtitle
+#: addon\globalPlugins\AVC\__init__.py:897
+msgid "Subtitle &Language:"
+msgstr "&Sprachen für Untertitel:"
+
 #. Translators: Checkbox name in the configuration dialog for AVC logging
-#: addon\globalPlugins\AVC\__init__.py:709
+#: addon\globalPlugins\AVC\__init__.py:906
 msgid "Write &report file"
 msgstr "&Log-Datei erstellen"
 
 #. Translator: Title of error dialog "Folder does not exist"
-#: addon\globalPlugins\AVC\__init__.py:720
+#: addon\globalPlugins\AVC\__init__.py:924
 msgid "Error - Folder does not exist"
 msgstr "Fehler – Ordner existiert nicht"
 
-#: addon\globalPlugins\AVC\__init__.py:723
+#: addon\globalPlugins\AVC\__init__.py:927
 #, python-brace-format
 msgid ""
 "The folder ({folderPath}) does not exist.\n"
@@ -129,11 +134,11 @@ msgstr ""
 "Die Änderungen wurden nicht gespeichert."
 
 #. Translator: Title of error dialog "No write access to folder"
-#: addon\globalPlugins\AVC\__init__.py:741
+#: addon\globalPlugins\AVC\__init__.py:945
 msgid "Error - No write access to folder"
 msgstr "Fehler – Kein Schreibzugriff auf den Ordner"
 
-#: addon\globalPlugins\AVC\__init__.py:744
+#: addon\globalPlugins\AVC\__init__.py:948
 #, python-brace-format
 msgid ""
 "No write access to folder {folderPath} (Code: {code})\n"
@@ -144,40 +149,50 @@ msgstr ""
 "Bitte wählen Sie einen Ordner mit Schreibzugriff aus.\n"
 "Die Änderungen wurden nicht gespeichert."
 
-#. Translators: The converting process will terminate by user
-#: addon\globalPlugins\AVC\__init__.py:826
-msgid "The converting process will terminate."
-msgstr "Der Konvertierungsvorgang wird beendet."
+#. Translators: A system error message to translate
+#: addon\globalPlugins\AVC\__init__.py:1010
+#, python-brace-format
+msgid ""
+"Unable to download video subtitles for {language}: HTTP Error 429: Too Many "
+"Requests"
+msgstr "Untertitel in {language} kann nicht geladen werden: Zu viele Anfragen"
 
-#. Translators: Canceling process by user. No converting task active.
-#: addon\globalPlugins\AVC\__init__.py:836
-msgid "No converting task active."
-msgstr "Keine Konvertierungsaufgabe aktiv."
+#. Translators: Error, if subtitle is not available
+#: addon\globalPlugins\AVC\__init__.py:1016
+#, python-brace-format
+msgid "Error: {error}"
+msgstr "Fehler: {error}"
 
-#: addon\globalPlugins\AVC\__init__.py:877
+#. Translators: if there is no subtitle for the current language
+#: addon\globalPlugins\AVC\__init__.py:1027
+#, python-brace-format
+msgid "No subtitles available in {language}."
+msgstr "Keine Untertitel in {language} verfügbar."
+
+#: addon\globalPlugins\AVC\__init__.py:1089
 msgid "Save as MP3"
 msgstr "Als MP3 speichern"
 
-#: addon\globalPlugins\AVC\__init__.py:885
+#: addon\globalPlugins\AVC\__init__.py:1097
 msgid "Save as MP4"
 msgstr "Als MP4 speichern"
 
-#: addon\globalPlugins\AVC\__init__.py:893
+#: addon\globalPlugins\AVC\__init__.py:1105
 msgid "Open result folder"
 msgstr "Ergebnisordner öffnen"
 
-#: addon\globalPlugins\AVC\__init__.py:903
+#: addon\globalPlugins\AVC\__init__.py:1115
 msgid "Saves the subtitle of a YouTube video"
 msgstr "Speichert den Untertitel eines YouTube -Videos"
 
 #. Translators: Save the subtitle in the specified language
-#: addon\globalPlugins\AVC\__init__.py:926
+#: addon\globalPlugins\AVC\__init__.py:1138
 #, python-brace-format
 msgid "Save subtitle in {language}"
 msgstr "Untertitel in {language} speichern"
 
 #. Translators: No YouTube video link found
-#: addon\globalPlugins\AVC\__init__.py:947
+#: addon\globalPlugins\AVC\__init__.py:1159
 msgid "No YouTube video link found"
 msgstr "Kein YouTube -Videolink gefunden"
 
@@ -206,6 +221,12 @@ msgstr ""
 "nvda+Umschalt+y, konvertiert das aktuelle Video in MP4 \n"
 "nvda+Steuerung+y, öffnet den Ordner mit den konvertierten Dateien\n"
 "nvda+Alt+y, speichert den Untertitel des Videos als Text."
+
+#~ msgid "The converting process will terminate."
+#~ msgstr "Der Konvertierungsvorgang wird beendet."
+
+#~ msgid "No converting task active."
+#~ msgstr "Keine Konvertierungsaufgabe aktiv."
 
 #~ msgid ""
 #~ "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "

@@ -42,6 +42,12 @@
   - more log informations 
   *** 2025.06.30:
   - nvda+alt+y, Saves the subtitle of a YouTube video
+  
+  *** 2025.11.01:
+  - Added Finnish translation
+  - More and better error messages when generating subtitles
+  - For subtitles, the language can now be selected in the NVDA menu
+  - Playlists and channels are no longer automatically loaded completely. Can be set in the NVDA menu
  
  *** In Progress for future  *** 
  - The conversion process can be killed 
@@ -58,9 +64,12 @@ import signal
 import globalVars
 import gui
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
+from pathlib import Path
+from typing import List
 from gui import guiHelper
 from .skipTranslation import translate
 import wx 
+import re
 import tones 
 import config 
 import datetime 
@@ -74,6 +83,7 @@ import languageHandler
 import scriptHandler
 import subprocess
 import threading
+import traceback
 import platform
 import addonHandler
 
@@ -99,7 +109,7 @@ ConverterEXE     = AddOnPath + "\\Tools\\ffmpeg.exe"
 sectionName      = AddOnName 
 processID        = None 
 DelayAfterStart  = 120 # secounds 
-ShortLanguage = languageHandler.getLanguage()[:2]
+ShortLanguage = languageHandler.getLanguage().split("_")[0]
 
 MultimediaExtensions= {
 	"aac", 
@@ -161,6 +171,140 @@ def initConfiguration():
 
 initConfiguration()
 
+def convert_vtt_to_txt(vtt_filepath: str, delete_vtt: bool = False) -> bool:
+	"""
+	Convert a VTT transcription file to plain text.
+
+	This function reads a VTT file created by yt-dlp, removes all meta-information
+	and timestamps, and saves the pure transcription text to a .txt file with the
+	same name in the same directory.
+
+	Args:
+		vtt_filepath: Path to the VTT file to convert
+		delete_vtt: Whether to delete the VTT file after successful conversion
+
+	Returns:
+		bool: True if the text file was created successfully, False otherwise
+	"""
+	try:
+		# Check if VTT file exists
+		vtt_path = Path(vtt_filepath)
+		if not vtt_path.exists():
+			log(f"Error: VTT file not found: {vtt_filepath}")
+			return False
+
+		# Read VTT file
+		with open(vtt_path, encoding="utf-8") as f:
+			lines = f.readlines()
+
+		# Extract pure text from VTT
+		text_lines = []
+		skip_next = False
+
+		for line in lines:
+			stripped = line.strip()
+
+			# Skip VTT header
+			if stripped.startswith("WEBVTT") or (stripped == "Kind: captions"): 
+				continue
+
+			# Skip timestamp lines (format: 00:00:00.000 --> 00:00:00.000)
+			if "-->" in stripped:
+				skip_next = False
+				continue
+
+			# Skip cue identifiers (numbers or empty lines after timestamps)
+			if stripped.isdigit() or stripped == "":
+				continue
+
+			# Skip lines with VTT tags like <c> or alignment tags
+			if stripped.startswith("<") and stripped.endswith(">"):
+				continue
+
+			# Add text lines
+			if stripped:
+				# Remove inline VTT tags like <c>, <v>, etc.
+				cleaned = stripped
+				while "<" in cleaned and ">" in cleaned:
+					start = cleaned.find("<")
+					end = cleaned.find(">", start)
+					if end != -1:
+						cleaned = cleaned[:start] + cleaned[end + 1 :]
+					else:
+						break
+
+				if cleaned.strip():
+					if len(text_lines) == 0:
+						text_lines.append(cleaned.strip())
+					elif text_lines[-1] != cleaned.strip():
+						text_lines.append(cleaned.strip())
+
+		# Create output text file path
+		txt_path = vtt_path.with_suffix(".txt")
+
+		# Write to text file
+		with open(txt_path, "w", encoding="utf-8") as f:
+			f.write("\n".join(text_lines))
+
+		log(f"Successfully converted: {txt_path}")
+
+		# Delete VTT file if requested
+		if delete_vtt:
+			os.remove(vtt_path)
+			log(f"Deleted VTT file: {vtt_path}")
+
+		return True
+
+	except Exception as e:
+		log(f"Error converting VTT file: {e}")
+		return False
+		
+def find_files_with_extension(folder_path: str, extension: str) -> List[str]:
+	"""
+	Return a list of full paths to files with the given extension in the specified folder.
+
+	Args:
+		folder_path: Path to the folder to search in.
+		extension: File extension to match (e.g., '.vtt').
+
+	Returns:
+		A list of full file paths matching the extension, or an empty list if none found or an error occurs.
+	"""
+	try:
+		folder = Path(folder_path)
+
+		if not folder.exists():
+			log(f"Error: The path '{folder_path}' does not exist.")
+			return []
+
+		if not folder.is_dir():
+			log(f"Error: The path '{folder_path}' is not a directory.")
+			return []
+
+		if not extension.startswith("."):
+			extension = f".{extension}"
+
+		matching_files = [
+			str(file_path)
+			for file_path in folder.iterdir()
+			if file_path.is_file() and file_path.suffix.lower() == extension.lower()
+		]
+
+		if not matching_files:
+			log(f"No files with extension '{extension}' found in folder '{folder_path}'.")
+
+		return matching_files
+
+	except Exception as e:
+		log(f"An unexpected error occurred: {e}")
+		return []
+		
+def convert_subtitle_to_txt():
+	all_subtitles = find_files_with_extension(SubtitleFolder, ".vtt")
+	if len(all_subtitles) > 0:
+		for file in all_subtitles:
+			success = convert_vtt_to_txt(file, delete_vtt=True)
+
 def should_update():
 	"""
 		Check whether you want to update yt-dlp.exe.
@@ -196,7 +340,41 @@ def is_online():
 		return True 
 	except OSError:
 		return False
+		
+def get_long_lang():
+	try:
+		CurrentLanguage = getINI("SubtitleLanguage")
+		LocalizedLanguage = languageHandler.getLanguageDescription(CurrentLanguage)		
+		if LocalizedLanguage == None or LocalizedLanguage == "":
+			return translate("unknown")
+		return LocalizedLanguage
+	except:
+		return "Fehler" # translate("unknown")
+		
+def get_lang_from_string(s):
+	try:
+		match = re.search(r"subtitles for '([a-z]{2})'", s, re.IGNORECASE)
+		if match:
+			language_code = match.group(1).lower()
+			lang = languageHandler.getLanguageDescription(language_code)
+			if lang == None or lang == "":
+				lang = translate("unknown")
+			return lang 
+		else:
+			return translate("unknown")
+	except: 
+		return translate("unknown")
 
+def safe_splitlines(text):
+	"""Safe splitlines() wrapper to handle None and decoding issues."""
+	try:
+		if text is None:
+			return []
+		return text.splitlines()
+	except Exception as e:
+		log("Error while splitting lines:")
+		log(str(e))
+		return [text] if isinstance(text, str) else []
 
 def update_YouTubeEXE():
 	"""
@@ -250,10 +428,10 @@ def find_latest_srv1_file(directory_path):
 	path = Path(directory_path)
 	srv1_files = list(path.glob("*.SRV1"))
 	if not srv1_files:
-		return None  # No .SRV1 files found
+		return ""  # No .SRV1 files found
 	# Sort by last modified time (mtime)
 	latest_file = max(srv1_files, key=lambda f: f.stat().st_mtime)
-	return latest_file
+	return str(latest_file)
 	
 def extract_subtitles_as_text(srv1_file_path):
 	"""
@@ -263,9 +441,10 @@ def extract_subtitles_as_text(srv1_file_path):
 	returns the text content and the title of the file
 	Deletes the SRV1 file
 	"""
+	log(f"Start extraction with {srv1_file_path}")
 	from xml.etree import ElementTree as ET
 	if not srv1_file_path: 
-			return 
+			return "Hugo", ""
 	try:
 		tree = ET.parse(srv1_file_path)
 		root = tree.getroot()
@@ -516,7 +695,7 @@ def getWebSiteTitle():
 		log("title: URL not found") 
 		t = "Unknown_Title"
 	return t
-	
+ 	
 def makePrintable(s):
 	"""
 		replace not printable charakters with blank 
@@ -620,11 +799,9 @@ def convertToMP(mpFormat, YouTubePath, OtherPath):
 			cmd = [YouTubeEXE, "-f", str(mpFormat), "-o", "%(title)s.%(ext)s", URL]
 		if getINI("YouTubeDescription"): cmd.insert(-1, "--write-description")
 		if getINI("YouTubeSubtitle"): 
-				cmd.insert(-1, "--write-auto-sub")
+				cmd.insert(-1, "--write-auto-subs")
 				cmd.insert(-1, "--sub-langs")
-				cmd.insert(-1, "DE")
-				cmd.insert(-1, "--sub-format")
-				cmd.insert(-1, "srv1")
+				cmd.insert(-1, getINI("SubtitleLanguage"))
 		if not getINI("YouTubeChannel"): 
 				cmd.insert(-1, "--max-downloads")
 				cmd.insert(-1, "1")
@@ -704,6 +881,26 @@ class AddOnPanel(SettingsPanel):
 		self.YouTubeChannelChk = helper.addItem(wx.CheckBox(self, label=_("Download the &channel completely")))
 		self.YouTubeChannelChk.Bind(wx.EVT_CHECKBOX, self.onChk)
 		self.YouTubeChannelChk.Value = getINI("YouTubeChannel")
+		
+		# The list of languages with all entries:
+		originalList = languageHandler.getAvailableLanguages(presentational=True)[1:]  
+		# Temporary list with all short language IDs without duplicates
+		temp = list(set([x[0].split("_")[0] for x in originalList]))
+		# New list with short voice ID and short name
+		self.languageNames = [(x, languageHandler.getLanguageDescription(x)) for x in temp]
+		# List with language Names for choices 
+		languageChoices = [x[1] for x in self.languageNames]
+		# Index to the saved language
+		index = [x[0] for x in self.languageNames].index(getINI("SubtitleLanguage"))
+		
+		# Translators: label for selecting the language for the subtitle
+		subtitleLanguageLabel = _("Subtitle &Language:")
+		self.languageList = helper.addLabeledControl(
+			subtitleLanguageLabel,
+			wx.Choice,
+			choices=languageChoices,
+		)
+		self.languageList.SetSelection(index)
 
  		# Translators: Checkbox name in the configuration dialog for AVC logging 
 		self.LoggingChk = helper.addItem(wx.CheckBox(self, label=_("Write &report file")))
@@ -711,7 +908,14 @@ class AddOnPanel(SettingsPanel):
 		self.LoggingChk.Value = getINI("Logging")
 
 	def onSave(self):
-		folder = self.resultFolderEdit.Value
+		# Save the selected language for the subtitle
+		index = self.languageList.GetSelection()
+		langID = str(self.languageNames[index][0])
+		log("Get Selection: " + str(index) + " " + langID)
+		log("Get String Selection: " + str(self.languageList.GetStringSelection()))
+		setINI("SubtitleLanguage", langID)
+		folder = self.resultFolderEdit.Value	
+		# save the result folder 
 		folder = folder.strip() 
 		if folder.endswith("\\"):
 			folder = folder[0:len(folder)-1]
@@ -749,91 +953,99 @@ class AddOnPanel(SettingsPanel):
 
 	def onChk(self, event):
 		pass 
-
+		
 class SubtitleThread(threading.Thread):
 
 	def __init__(self, cmd, path):
 		super().__init__()
-		self.cmd  = cmd 
-		self.Path = path 
+		self.cmd = cmd
+		self.Path = path
 
 	def run(self):
-		log("Save the subtitel")
-		log("Command: " + " ".join(self.cmd))
-		# Si - Process should run in the background
-		si = subprocess.STARTUPINFO()
-		si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-		self.p = subprocess.Popen(
-			self.cmd, 
-			cwd=self.Path, 
-			stdin=subprocess.PIPE, 
-			stdout=subprocess.PIPE, 
-			stderr=subprocess.PIPE, 
-			startupinfo=si, 
-			encoding="unicode_escape"
-		)
-		output = self.p.stdout
-		log("Returncode: " + str(self.p.returncode))
-		log("Error     : " + str(self.p.stderr))
-		log("Output    : " + str(output))
-		log("**** neu ***")
-		# Lies stdout und stderr komplett
-		stdout_data, stderr_data = self.p.communicate()
-		log("Returncode: " + str(self.p.returncode))
-		log("Error     :")
-		for line in stderr_data.splitlines():
-			log(line)
-		og("Output    :")
-		for line in stdout_data.splitlines():
-			log(line)
-		self.p.wait() 
-		msg, title = extract_subtitles_as_text(find_latest_srv1_file(SubtitleFolder))
+		log("=== SubtitleThread started ===")
+		log(f"Working directory: {self.Path}")
+		log(f"Command: {' '.join(self.cmd)}")
 
-class converterThread(threading.Thread):
+		try:
+			si = subprocess.STARTUPINFO()
+			si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
-	def __init__(self, cmd, Path):
-		super().__init__()
-		self.cmd = cmd 
-		self.Path = Path 
-		self.stopSignal = False 
+			self.p = subprocess.Popen(
+				self.cmd,
+				cwd=self.Path,
+				stdin=subprocess.PIPE,
+				stdout=subprocess.PIPE,
+				stderr=subprocess.PIPE,
+				startupinfo=si,
+				encoding="utf-8",
+				errors="replace"
+			)
 
-	def run(self):
-		global processID
-		log(" ".join(self.cmd))
-		log("Start: " + getTime())  
-		StartTime = int(time.time())
-		# Si - Process should run in the background
-		si = subprocess.STARTUPINFO()
-		si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-		#p = subprocess.Popen(self.cmd, cwd=self.Path, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, startupinfo=si, encoding="unicode_escape", text=True)
-		self.p = subprocess.Popen(self.cmd, cwd=self.Path, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=si, encoding="unicode_escape")
-		processID = self.p.pid
-		log("Process ID: " + str(processID))
-		stdout, stderr = self.p.communicate()
-		log("StandardError: " + str(stderr))
-		log("ReturnCode: " + str(self.p.returncode))
-		log("stdOut:\n" + str(stdout))
-		self.p.wait() 
-		EndTime = int(time.time())
-		Sec = EndTime - StartTime
-		log("End  : " + getTime() + " (" + str(Sec) + " Sec)")
+			log("Subprocess launched. Waiting for output...")
 
-	def terminateProcess():
-		global processID
-		log("Terminate process by user")
-		if processID:
-			# Translators: The converting process will terminate by user
-			ui.message(_("The converting process will terminate."))
-			try:
-				os.kill(processID, 4)
-				processID = None 
-				log("terminate process successful")
-			except:
-				log("Error: terminating process")
-		else:
-			log("No converting task active.")
-			# Translators: Canceling process by user. No converting task active.
-			ui.message(_("No converting task active."))
+			stdout_data, stderr_data = self.p.communicate()
+			self.p.wait()
+
+			return_code = self.p.returncode
+			log(f"Return code: {return_code}")
+
+			# Log error code if available (some systems use exit codes > 0 as error indicators)
+			if return_code != 0:
+				log(f"Error code detected: {return_code}")
+
+			# Log STDERR
+			log("=== STDERR ===")
+			error    = ""
+			allError = ""
+			if stderr_data:
+				for line in safe_splitlines(stderr_data):
+					line = line.strip()
+					log(line)
+					if line.startswith("ERROR: "):
+						if (line.startswith("ERROR: Unable to download video subtitles for") and 
+							line.endswith("Error 429: Too Many Requests")
+							):
+							language = get_lang_from_string(line)
+							# Translators: A system error message to translate
+							line = _("Unable to download video subtitles for {language}: HTTP Error 429: Too Many Requests").format(language=language)
+						error = error + line + " " 
+					else: 
+						allError = allError + line + " " 
+				if error:
+					# Translators: Error, if subtitle is not available 
+					ui.message(_("Error: {error}").format(error=error))
+					return 
+			else:
+				log("(No error output)")
+
+			# Log STDOUT
+			log("=== STDOUT ===")
+			if stdout_data:
+				for line in safe_splitlines(stdout_data):
+					if line == "[info] There are no subtitles for the requested languages":
+						# Translators: if there is no subtitle for the current language
+						ui.message(_("No subtitles available in {language}.").format(language=get_long_lang()))
+					log(line)
+			else:
+				log("(No standard output)")
+
+		except Exception as e:
+			log("!!! Exception during subprocess execution !!!")
+			log(f"Error message: {str(e)}")
+			log("Stack trace:")
+			log(traceback.format_exc())
+			return 
+
+		try:
+			log(f"Attempting subtitle extraction: {self.Path}")
+			convert_subtitle_to_txt()
+		except Exception as e:
+			log("!!! Exception during subtitle extraction !!!")
+			log(f"Error message: {str(e)}")
+			log("Stack trace:")
+			log(traceback.format_exc())
+
+		log("=== SubtitleThread finished ===")
 
 class WaitThread(threading.Thread):
 
@@ -926,12 +1138,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("Save subtitle in {language}").format(language=LocalizedLanguage))
 			cmd = [
 				YouTubeEXE, 
-				"--write-auto-sub", 
-				"--sub-langs", 
-				CurrentLanguage, 
+				"--write-auto-subs", 
+				"--sub-langs", CurrentLanguage, 
 				"--skip-download", 
-				"--sub-format", "srv1", 
-				"--paths", SubtitleFolder, 
+				"--max-downloads", "1", 
+				"--no-playlist",
+				"--paths", SubtitleFolder,
 				"--output", "%(title)s.%(ext)s",
 				URL
 			]
@@ -945,12 +1157,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			log("No YouTube Video Link found")
 			# Translators: No YouTube video link found
 			ui.message(_("No YouTube video link found"))
-
+"""
 	@script(
 		description="Only for test",
 		gesture="kb:NVDA+l"
 	)
 	def script_test(self, gesture):
-		msg = "Hugo"
-		ui.message(msg) 
-		
+		msg = "Test"
+		ui.message(str(msg) )
+"""
