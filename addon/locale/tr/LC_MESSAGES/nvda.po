@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ses Video Dönüştürücü\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2025-11-01 11:20+0100\n"
+"POT-Creation-Date: 2025-11-03 11:43+0100\n"
 "PO-Revision-Date: 2024-04-20 18:54+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
@@ -44,7 +44,7 @@ msgstr "Tarayıcı penceresi bulunamadı"
 
 #. Translators: No URL found in browser document, function terminate
 #: addon\globalPlugins\AVC\__init__.py:784
-#: addon\globalPlugins\AVC\__init__.py:1129
+#: addon\globalPlugins\AVC\__init__.py:1175
 msgid "Document URL not found - exit"
 msgstr "Belge Bağlantısı bulunamadı - çık"
 
@@ -167,30 +167,40 @@ msgstr ""
 msgid "No subtitles available in {language}."
 msgstr ""
 
-#: addon\globalPlugins\AVC\__init__.py:1089
+#. Translators: The converting process will terminate by user
+#: addon\globalPlugins\AVC\__init__.py:1084
+msgid "The converting process will terminate."
+msgstr "Dönüştürme işlemi sonlandırılacak."
+
+#. Translators: Canceling process by user. No converting task active.
+#: addon\globalPlugins\AVC\__init__.py:1094
+msgid "No converting task active."
+msgstr "Devam eden dönüştürme işlemi bulunmuyor."
+
+#: addon\globalPlugins\AVC\__init__.py:1135
 msgid "Save as MP3"
 msgstr "MP3 olarak kaydet"
 
-#: addon\globalPlugins\AVC\__init__.py:1097
+#: addon\globalPlugins\AVC\__init__.py:1143
 msgid "Save as MP4"
 msgstr "MP4 olarak kaydet"
 
-#: addon\globalPlugins\AVC\__init__.py:1105
+#: addon\globalPlugins\AVC\__init__.py:1151
 msgid "Open result folder"
 msgstr "Sonuç klasörünü açar"
 
-#: addon\globalPlugins\AVC\__init__.py:1115
+#: addon\globalPlugins\AVC\__init__.py:1161
 msgid "Saves the subtitle of a YouTube video"
 msgstr ""
 
 #. Translators: Save the subtitle in the specified language
-#: addon\globalPlugins\AVC\__init__.py:1138
+#: addon\globalPlugins\AVC\__init__.py:1184
 #, python-brace-format
 msgid "Save subtitle in {language}"
 msgstr ""
 
 #. Translators: No YouTube video link found
-#: addon\globalPlugins\AVC\__init__.py:1159
+#: addon\globalPlugins\AVC\__init__.py:1205
 #, fuzzy
 msgid "No YouTube video link found"
 msgstr "YouTube videosu ve multimedya bağlantısı bulunamadı"
@@ -213,12 +223,6 @@ msgid ""
 "\tNVDA+Control+y, Opens the folder with the converted files\n"
 "\tNVDA+Alt+y, Saves the subtitle of the video as text."
 msgstr ""
-
-#~ msgid "The converting process will terminate."
-#~ msgstr "Dönüştürme işlemi sonlandırılacak."
-
-#~ msgid "No converting task active."
-#~ msgstr "Devam eden dönüştürme işlemi bulunmuyor."
 
 #~ msgid ""
 #~ "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "

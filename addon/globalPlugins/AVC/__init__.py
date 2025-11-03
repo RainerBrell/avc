@@ -1046,6 +1046,52 @@ class SubtitleThread(threading.Thread):
 			log(traceback.format_exc())
 
 		log("=== SubtitleThread finished ===")
+		
+class converterThread(threading.Thread):
+
+	def __init__(self, cmd, Path):
+		super().__init__()
+		self.cmd = cmd 
+		self.Path = Path 
+		self.stopSignal = False 
+
+	def run(self):
+		global processID
+		log(" ".join(self.cmd))
+		log("Start: " + getTime())  
+		StartTime = int(time.time())
+		# Si - Process should run in the background
+		si = subprocess.STARTUPINFO()
+		si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+		#p = subprocess.Popen(self.cmd, cwd=self.Path, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, startupinfo=si, encoding="unicode_escape", text=True)
+		self.p = subprocess.Popen(self.cmd, cwd=self.Path, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=si, encoding="unicode_escape")
+		processID = self.p.pid
+		log("Process ID: " + str(processID))
+		stdout, stderr = self.p.communicate()
+		log("StandardError: " + str(stderr))
+		log("ReturnCode: " + str(self.p.returncode))
+		log("stdOut:\n" + str(stdout))
+		self.p.wait() 
+		EndTime = int(time.time())
+		Sec = EndTime - StartTime
+		log("End  : " + getTime() + " (" + str(Sec) + " Sec)")
+
+	def terminateProcess():
+		global processID
+		log("Terminate process by user")
+		if processID:
+			# Translators: The converting process will terminate by user
+			ui.message(_("The converting process will terminate."))
+			try:
+				os.kill(processID, 4)
+				processID = None 
+				log("terminate process successful")
+			except:
+				log("Error: terminating process")
+		else:
+			log("No converting task active.")
+			# Translators: Canceling process by user. No converting task active.
+			ui.message(_("No converting task active."))
 
 class WaitThread(threading.Thread):
 
