@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'AVC' '2024.04.26'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2025-06-16 20:12+0300\n"
-"PO-Revision-Date: 2025-09-22 17:50+0300\n"
+"POT-Creation-Date: 2025-11-01 16:22+0200\n"
+"PO-Revision-Date: 2025-11-01 16:35+0200\n"
 "Last-Translator: Jani Kinnunen <janikinnunen340@gmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Translators: Title of the window if an error occurred during unpacking.
 #: addon\installTasks.py:63
@@ -32,72 +32,73 @@ msgstr ""
 "Yritä purkaa se itse tai ota yhteyttä tämän lisäosan tekijään."
 
 #. Translators: Could not create  folder.
-#: addon\globalPlugins\AVC\__init__.py:280
+#: addon\globalPlugins\AVC\__init__.py:354
 msgid "Error - can not create folder"
 msgstr "Virhe: kansiota ei voi luoda"
 
 #. Translators: The user is not in a browser.
-#: addon\globalPlugins\AVC\__init__.py:331
+#: addon\globalPlugins\AVC\__init__.py:408
 msgid "No browser window found"
 msgstr "Selainikkunaa ei löydy"
 
 #. Translators: No URL found in browser document, function terminate
-#: addon\globalPlugins\AVC\__init__.py:521
+#: addon\globalPlugins\AVC\__init__.py:598
+#: addon\globalPlugins\AVC\__init__.py:870
 msgid "Document URL not found - exit"
 msgstr "Dokumentin URL-osoitetta ei löydy. Suljetaan."
 
 #. Translators: save YouTube Video as MP3 or MP4
-#: addon\globalPlugins\AVC\__init__.py:532
+#: addon\globalPlugins\AVC\__init__.py:609
 msgid "Save YouTube Video as {MultimediaFormat}"
 msgstr "Tallenna YouTube-video {MultimediaFormat}-muodossa"
 
 #. Translators: save multimedia link  as MP3 or MP4
-#: addon\globalPlugins\AVC\__init__.py:559
+#: addon\globalPlugins\AVC\__init__.py:636
 msgid "Save link as {MultimediaFormat}"
 msgstr "Tallenna linkki {MultimediaFormat}-muodossa"
 
 #. Translators: No YouTube video and no multimedia link found
-#: addon\globalPlugins\AVC\__init__.py:566
+#: addon\globalPlugins\AVC\__init__.py:643
 msgid "No YouTube video and no multimedia link found"
 msgstr "YouTube-videota tai medialinkkiä ei löydy"
 
 #. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
 #. Translators: This is a label for an edit field in the AVC Settings panel.
-#: addon\globalPlugins\AVC\__init__.py:576
+#: addon\globalPlugins\AVC\__init__.py:653
 msgid "Result folder"
 msgstr "Kohdekansio"
 
 #. Translators: The label of a button to browse for a directory
-#: addon\globalPlugins\AVC\__init__.py:581
+#: addon\globalPlugins\AVC\__init__.py:658
 msgid "&Browse..."
 msgstr "&Selaa..."
 
 #. Translators: The title of the dialog presented when browsing for the directory.
-#: addon\globalPlugins\AVC\__init__.py:583
+#: addon\globalPlugins\AVC\__init__.py:660
 msgid "Select a directory"
 msgstr "Valitse kansio"
 
 #. Translators: Checkbox name for sound signal feedback in the configuration dialog
-#: addon\globalPlugins\AVC\__init__.py:590
+#: addon\globalPlugins\AVC\__init__.py:667
 msgid "&beep while converting"
 msgstr "&Anna merkkiääni muunnoksen aikana"
 
 #. Translators: Checkbox name in the configuration dialog
-#: addon\globalPlugins\AVC\__init__.py:594
+#: addon\globalPlugins\AVC\__init__.py:671
 msgid "&Write YoutTube description file"
 msgstr "&Tallenna YouTube-kuvaustiedosto"
 
 #. Translators: Checkbox name in the configuration dialog
-#: addon\globalPlugins\AVC\__init__.py:598
+#: addon\globalPlugins\AVC\__init__.py:675
 msgid "Write &report file"
 msgstr "Tallenna rap&orttitiedosto"
 
 #. Translator: Title of error dialog "Folder does not exist"
-#: addon\globalPlugins\AVC\__init__.py:609
+#: addon\globalPlugins\AVC\__init__.py:686
 msgid "Error - Folder does not exist"
 msgstr "Virhe: kansiota ei ole olemassa"
 
-#: addon\globalPlugins\AVC\__init__.py:612
+#: addon\globalPlugins\AVC\__init__.py:689
 msgid ""
 "The folder ({folderPath}) does not exist.\n"
 "Please check the path or use the Browse button.\n"
@@ -108,11 +109,11 @@ msgstr ""
 "Muutoksia ei tallennettu."
 
 #. Translator: Title of error dialog "No write access to folder"
-#: addon\globalPlugins\AVC\__init__.py:627
+#: addon\globalPlugins\AVC\__init__.py:704
 msgid "Error - No write access to folder"
 msgstr "Virhe: kansioon ei ole kirjoitusoikeuksia"
 
-#: addon\globalPlugins\AVC\__init__.py:630
+#: addon\globalPlugins\AVC\__init__.py:707
 msgid ""
 "No write access to folder {folderPath} (Code: {code})\n"
 "Please select a folder with write access.\n"
@@ -123,26 +124,40 @@ msgstr ""
 "Muutoksia ei tallennettu."
 
 #. Translators: The converting process will terminate by user
-#: addon\globalPlugins\AVC\__init__.py:673
+#: addon\globalPlugins\AVC\__init__.py:779
 msgid "The converting process will terminate."
 msgstr "Muunnos keskeytetään."
 
 #. Translators: Canceling process by user. No converting task active.
-#: addon\globalPlugins\AVC\__init__.py:683
+#: addon\globalPlugins\AVC\__init__.py:789
 msgid "No converting task active."
 msgstr "Ei muunnostehtävää aktiivisena."
 
-#: addon\globalPlugins\AVC\__init__.py:723
+#: addon\globalPlugins\AVC\__init__.py:830
 msgid "Save as MP3"
 msgstr "Tallenna MP3-muodossa"
 
-#: addon\globalPlugins\AVC\__init__.py:731
+#: addon\globalPlugins\AVC\__init__.py:838
 msgid "Save as MP4"
 msgstr "Tallenna MP4-muodossa"
 
-#: addon\globalPlugins\AVC\__init__.py:739
+#: addon\globalPlugins\AVC\__init__.py:846
 msgid "Open result folder"
 msgstr "Avaa kohdekansio"
+
+#: addon\globalPlugins\AVC\__init__.py:856
+msgid "Saves the subtitle of a YouTube video"
+msgstr "Tallentaa YouTube-videon tekstityksen"
+
+#. Translators: Save the subtitle in the specified language
+#: addon\globalPlugins\AVC\__init__.py:879
+msgid "Save subtitle in {language}"
+msgstr "Tallenna tekstitys kielellä {language}"
+
+#. Translators: No YouTube video link found
+#: addon\globalPlugins\AVC\__init__.py:900
+msgid "No YouTube video link found"
+msgstr "YouTube-videon linkkiä ei löydy"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
@@ -156,7 +171,22 @@ msgstr "Ääni- ja videomuunnin"
 #: buildVars.py:26
 msgid ""
 "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
-"the browser."
+"the browser:\n"
+"\tNVDA+y, Converts the current video to MP3\n"
+"\tNVDA+Shift+y, Converts the current video to MP4\n"
+"\tNVDA+Control+y, Opens the folder with the converted files\n"
+"\tNVDA+Alt+y, Saves the subtitle of the video as text."
 msgstr ""
 "Muuntaa YouTube-videon tai muun medialinkin MP3- tai MP4-muotoon suoraan "
-"selaimesta."
+"selaimesta:\n"
+"\tNVDA+Y: Muuntaa nykyisen videon MP3-muotoon.\n"
+"\tNVDA+Vaihto+Y: Muuntaa nykyisen videon MP4-muotoon.\n"
+"\tNVDA+Ctrl+Y: Avaa muunnettujen tiedostojen kansion.\n"
+"\tNVDA+Alt+Y: Tallentaa videon tekstityksen tekstimuodossa."
+
+#~ msgid ""
+#~ "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
+#~ "the browser."
+#~ msgstr ""
+#~ "Muuntaa YouTube-videon tai muun medialinkin MP3- tai MP4-muotoon suoraan "
+#~ "selaimesta."
