@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ses Video Dönüştürücü\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
 "POT-Creation-Date: 2026-04-10 14:27+0200\n"
-"PO-Revision-Date: 2024-04-20 18:54+0300\n"
+"PO-Revision-Date: 2026-04-17 21:37+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: Title of the window if an error occurred during unpacking.
 #: addon\installTasks.py:63
@@ -98,17 +98,17 @@ msgstr "YouTube açıklama dosyası &oluştur"
 #. Translators: Checkbox name in the configuration dialog  for youtube Playlist
 #: addon\globalPlugins\AVC\__init__.py:882
 msgid "Download the &play list completely"
-msgstr ""
+msgstr "&Oynatma listesinin tamamını indir"
 
 #. Translators: Checkbox name in the configuration dialog  for youtube Channel
 #: addon\globalPlugins\AVC\__init__.py:887
 msgid "Download the &channel completely"
-msgstr ""
+msgstr "&Kanalın tamamını indir"
 
 #. Translators: label for selecting the language for the subtitle
 #: addon\globalPlugins\AVC\__init__.py:903
 msgid "Subtitle &Language:"
-msgstr ""
+msgstr "A&ltyazı Dili:"
 
 #. Translators: Checkbox name in the configuration dialog for AVC logging
 #: addon\globalPlugins\AVC\__init__.py:912
@@ -154,18 +154,20 @@ msgid ""
 "Unable to download video subtitles for {language}: HTTP Error 429: Too Many "
 "Requests"
 msgstr ""
+"{language} için video altyazıları indirilemiyor: HTTP Hatası 429: Çok Fazla "
+"İstek"
 
 #. Translators: Error, if subtitle is not available
 #: addon\globalPlugins\AVC\__init__.py:1022
 #, python-brace-format
 msgid "Error: {error}"
-msgstr ""
+msgstr "Hata: {error}"
 
 #. Translators: if there is no subtitle for the current language
 #: addon\globalPlugins\AVC\__init__.py:1033
 #, python-brace-format
 msgid "No subtitles available in {language}."
-msgstr ""
+msgstr "{language} dilinde altyazı mevcut değil."
 
 #. Translators: The converting process will terminate by user
 #: addon\globalPlugins\AVC\__init__.py:1090
@@ -191,19 +193,18 @@ msgstr "Sonuç klasörünü açar"
 
 #: addon\globalPlugins\AVC\__init__.py:1168
 msgid "Saves the subtitle of a YouTube video"
-msgstr ""
+msgstr "Bir YouTube videosunun altyazısını kaydeder"
 
 #. Translators: Save the subtitle in the specified language
 #: addon\globalPlugins\AVC\__init__.py:1191
 #, python-brace-format
 msgid "Save subtitle in {language}"
-msgstr ""
+msgstr "Altyazıyı {language} dilinde kaydet"
 
 #. Translators: No YouTube video link found
 #: addon\globalPlugins\AVC\__init__.py:1212
-#, fuzzy
 msgid "No YouTube video link found"
-msgstr "YouTube videosu ve multimedya bağlantısı bulunamadı"
+msgstr "YouTube video bağlantısı bulunamadı"
 
 #. Add-on summary/title, usually the user visible name of the add-on
 #. Translators: Summary/title for this add-on
@@ -223,6 +224,12 @@ msgid ""
 "\tNVDA+Control+y, Opens the folder with the converted files\n"
 "\tNVDA+Alt+y, Saves the subtitle of the video as text."
 msgstr ""
+"Bir YouTube videosunu veya multimedya bağlantısını doğrudan tarayıcıdan MP3 "
+"veya MP4'e dönüştürür:\n"
+"\tNVDA+y, Geçerli videoyu MP3'e dönüştürür\n"
+"\tNVDA+Shift+y, Geçerli videoyu MP4'e dönüştürür\n"
+"\tNVDA+Kontrol+y, Dönüştürülen dosyaların bulunduğu klasörü açar\n"
+"\tNVDA+Alt+y, Video altyazısını metin olarak kaydeder."
 
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
@@ -234,6 +241,11 @@ msgid ""
 "causes AVC to crash\n"
 "- Updated localization for Vietnamese"
 msgstr ""
+"* Sürüm: 2026.02.22\n"
+"- NVDA 2026.1 için hazırlandı\n"
+"- SVD başlatılırken geçersiz bir \"sonuç klasörü\" bulunursa bu durum artık "
+"SVD'nin çökmesine neden olmaz\n"
+"- Vietnamca için dil dosyaları güncellendi"
 
 #~ msgid ""
 #~ "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "

@@ -1,74 +1,63 @@
-# Ses Video Dönüştürücü
+## Ses Video Dönüştürücü
 
 * Yazar: Rainer Brell
 
 ## İşlevsellik
 
-"Ses Video Dönüştürücü" bir YouTube videosunu veya bir tarayıcıdan gelen multimedya bağlantısını MP3 veya MP4 formatında kaydeder ve dönüştürür.
-Tarayıcınızda bir YouTube sayfasındaysanız, YouTube videosu reklamsız olarak istenen formatta kaydedilecektir. Bu, başlangıçta hala reklam oynatılıyorsa da çalışır.
+*Ses Video Dönüştürücü*, bir tarayıcıdan bir YouTube videosunu veya bir multimedya bağlantısını MP3 veya MP4 biçiminde kaydeder ve dönüştürür. Ayrıca bir YouTube videosunun altyazısını metin olarak da kaydedebilir.
 
-1 saatlik bir YouTube videosu yaklaşık 2 dakika içinde MP3 olarak kaydedilebilir. Bu, bilgisayarın performansına bağlıdır.
+Tarayıcıda bir YouTube sayfasındaysanız, YouTube videosu istenen biçimde reklamsız olarak kaydedilir. Bu, başlangıçta reklam oynatılıyor olsa bile çalışır.
 
-Bu, kanaldaki tüm videoların yüklenmesi için o anda bir kanalı oynatıyorsanız da çalışır. Bu işlem uzun sürebilir ve sabit diskte çok fazla yer kaplayabilir.
+Bir saatlik bir YouTube videosu yaklaşık 2 dakika içinde MP3 olarak kaydedilebilir. Bu, bilgisayarın performansına bağlıdır.
 
-Dönüştürme komutu etkinleştirilir etkinleştirilmez tarayıcı kapatılabilir. İşlem arka planda devam eder ve bu durum seslerle bildirilir.
+Dönüştürme komutu etkinleştirildiğinde tarayıcı kapatılabilir. İşlem arka planda devam eder ve bu durum seslerle bildirilir.
 
-Aynı zamanda, her YouTube videosu için açıklama içeren bir metin dosyası oluşturulur. Orada faydalı bilgiler bulabilirsiniz. Metin dosyası Windows Düzenleyici ile okunabilir. Bu dosyanın oluşturulması ayarlardan özelleştirilebilir.
+Aynı zamanda her YouTube videosu için bir açıklama içeren bir metin dosyası oluşturulur. Bu dosyada faydalı bilgiler bulunabilir. Metin dosyası Windows Not Defteri ile okunabilir. Bu dosyanın oluşturulması ayarlarda değiştirilebilir.
 
-YouTube'da değilseniz, bir multimedya dosyasına işaret eden bir bağlantıda olup olmadığınızı kontrol edecektir. Eğer durum buysa, hedef buna göre kaydedilecek ve istenen formata dönüştürülecektir.
+YouTube’da değilseniz, bir multimedya dosyasına işaret eden bir bağlantıda olup olmadığınız kontrol edilir. Eğer öyleyse, hedef uygun şekilde kaydedilir ve istenen biçime dönüştürülür.
 
-Dönüştürme sırasında, dönüştürmenin hala devam ettiğini bildirmek için düşük sesli bir bip sesi duyulacaktır. Bu ses ayarlardan devre dışı bırakılabilir.
+Dönüştürme sırasında, hâlâ dönüştürmenin devam ettiğini belirtmek için düşük seviyede bir uyarı sesi verilir. Bu ses ayarlardan devre dışı bırakılabilir.
 
-Sonuçlar, tek bir kısayol tuşuyla erişebileceğiniz kendi klasörlerine kaydedilir. Klasör NVDA'nın ayarlarından özelleştirilebilir.
+Sonuçlar, tek bir kısayol tuşu ile açabileceğiniz ayrı bir klasörde kaydedilir. Bu klasör NVDA ayarlarında değiştirilebilir.
 
-### Kısayol tuşları:
+Kanallar veya oynatma listeleri otomatik olarak tamamen kaydedilmez. Bu davranış NVDA menüsünde ayarlanabilir.
 
-* NVDA+y, MP3'e dönüştürür
-* NVDA+shift+y, MP4'e dönüştürür
-* NVDA+Control+y, Sonuçların bulunduğu klasörü açar
+Artık bir YouTube videosunun altyazısını metin olarak tanımak da mümkündür – yabancı dillerde bile.
 
-## Desteklenen dosya türleri:
+Örnek: Diliniz İspanyolca ve İtalyanca bir YouTube videosu oynatıyorsunuz. **NVDA+Alt+Y** tuşlarına basın ve konuşulanın İspanyolca olarak metin şeklinde kaydedilmesi denenir. Bu her zaman çalışmaz, çünkü bu durum benim etkileyemediğim birçok teknik faktöre bağlıdır. Hedef dil NVDA menüsünden ayarlanabilir.
 
-Bu ses ve video biçimleri, bu uzantılardan birine sahip bir multimedya bağlantısında olduğunuzda tanınır ve istenen formata dönüştürülür.
+### Kısayol tuşları
 
-* aac 
-* avi 
-* flac 
-* mkv 
-* m3u8 
-* m4a 
-* m4s 
-* m4v 
-* mpg 
-* mov 
-* mp2 
-* mp3 
-* mp4 
-* mpeg 
-* mpegts 
-* ogg 
-* ogv 
-* oga 
-* ts 
-* vob 
-* wav 
-* webm 
-* wmv 
-* f4v 
-* flv
-* swf 
-* avchd
-* 3gp
+* **NVDA+Y** – MP3’e dönüştürür
+* **NVDA+Shift+Y** – MP4’e dönüştürür
+* **NVDA+Alt+Y** – Mümkünse altyazıyı metin olarak kaydeder
+* **NVDA+Ctrl+Y** – Sonuçların bulunduğu klasörü açar
 
-## Mevcut sürümdeki değişiklikler
+## Desteklenen dosya biçimleri
 
-* Teknik nedenlerden dolayı yalnızca Windows 64 BIT ile çalışır
-* Artık Firefox'ta tekrar çalışıyor
-* GitHub'da barındırılıyor ve NVDA Store'da mevcut
-* Sonuçlar klasörü NVDA ayarlarında özelleştirilebilir
-* Ayarlar artık güvenilir bir şekilde kaydediliyor
-* Türkçe, Vietnamca ve Ukraynaca dil desteği.
+Aşağıdaki ses ve video biçimleri tanınır ve bu uzantılardan birine sahip bir multimedya bağlantısındaysanız istenen biçime dönüştürülür:
 
-## Çok teşekkür ederiz
+aac, avi, flac, mkv, m3u8, m4a, m4s, m4v, mpg, mov, mp2, mp3, mp4, mpeg, mpegts, ogg, ogv, oga, ts, vob, wav, webm, wmv, f4v, flv, swf, avchd, 3gp
 
-Eklentiyi tercüme etmeye zaman ayıran ve geri bildirimde bulunan tüm yardımcılara teşekkür ederiz.
+## 2026.01.24 sürümüne kadar yapılan değişiklikler
+
+* “İsteğe bağlı Konuşma” çalışıyor
+* Arka plan bileşenleri otomatik olarak güncellenir
+* Sorun durumunda daha iyi yardımcı olabilmek için daha fazla günlük kaydı
+* Altyazı kaydetme özelliği eklendi
+* Altyazı dili seçimi eklendi
+* Oynatma listeleri ve kanallar artık otomatik olarak tamamen yüklenmez; NVDA menüsünden ayarlanabilir
+* Arapça ve Fince çeviri
+
+## 2024.04.27 sürümündeki değişiklikler
+
+* Teknik nedenlerden dolayı yalnızca Windows 64-bit ile çalışır
+* Artık tekrar Firefox’ta da çalışıyor
+* GitHub üzerinde barındırılıyor ve NVDA Mağazası’nda mevcut
+* Sonuç klasörü NVDA ayarlarından değiştirilebilir
+* Ayarlar artık güvenilir şekilde kaydediliyor
+* Türkçe, Lehçe, İtalyanca, Fransızca, İspanyolca, Vietnamca, Ukraynaca ve Portekizce yerelleştirme
+
+## Teşekkür
+
+Genişletmemi çevirmek ve geri bildirim vermek için zaman ayıran tüm yardımcılar teşekkür ederim.
