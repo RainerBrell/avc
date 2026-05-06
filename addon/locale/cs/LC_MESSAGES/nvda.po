@@ -6,22 +6,22 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: AVC 2024.04\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
 "POT-Creation-Date: 2026-05-06 10:46+0200\n"
-"PO-Revision-Date: 2024-04-25 11:20+0200\n"
-"Last-Translator: Rainer Brell <nvda@brell.net>\n"
-"Language-Team: Google Translator\n"
-"Language: fr\n"
+"PO-Revision-Date: 2025-07-09 17:18+0200\n"
+"Last-Translator: Radek Žalud <radek.zalud@seznam.cz>\n"
+"Language-Team: \n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Translators: Title of the window if an error occurred during unpacking.
 #: addon\installTasks.py:63
 msgid "Attention - error when unpacking"
-msgstr "Attention - erreur lors du déballage"
+msgstr "Pozor - chyba při rozbalování"
 
 #: addon\installTasks.py:66
 #, python-brace-format
@@ -29,68 +29,67 @@ msgid ""
 "The file {file} could not be unpacked correctly in the folder {folder}. \n"
 "Try it yourself locally or contact the author of this extension."
 msgstr ""
-"Le fichier {file} n'a pas pu être décompressé correctement dans le dossier "
-"{folder}.\n"
-"Essayez-le vous-même localement ou contactez l'auteur de cette extension."
+"Soubor {file} se nepodařilo správně rozbalit do složky {folder}.\n"
+"Zkuste to sami lokálně nebo kontaktujte autora tohoto doplňku."
 
 #. Translators: Could not create  folder.
 #: addon\globalPlugins\AVC\__init__.py:548
 msgid "Error - can not create folder"
-msgstr "Erreur - impossible de créer un dossier"
+msgstr "Chyba - nelze vytvořit složku"
 
 #. Translators: The user is not in a browser.
 #: addon\globalPlugins\AVC\__init__.py:602
 msgid "No browser window found"
-msgstr "Aucune fenêtre de navigateur trouvée"
+msgstr "Nebylo nalezeno žádné okno prohlížeče"
 
 #. Translators: No URL found in browser document, function terminate
 #: addon\globalPlugins\AVC\__init__.py:790
 #: addon\globalPlugins\AVC\__init__.py:1182
 msgid "Document URL not found - exit"
-msgstr "URL du document introuvable – quitter"
+msgstr "Url adresa dokumentu nebyla nalezena - ukončit"
 
 #. Translators: save YouTube Video as MP3 or MP4
 #: addon\globalPlugins\AVC\__init__.py:801
 #, python-brace-format
 msgid "Save YouTube Video as {MultimediaFormat}"
-msgstr "Enregistrer la vidéo YouTube au format {MultimediaFormat}"
+msgstr "Uložit YouTube video jako {MultimediaFormat}"
 
 #. Translators: save multimedia link  as MP3 or MP4
 #: addon\globalPlugins\AVC\__init__.py:836
 #, python-brace-format
 msgid "Save link as {MultimediaFormat}"
-msgstr "Enregistrer le lien sous {MultimediaFormat}"
+msgstr "Uložit odkaz jako {MultimediaFormat}"
 
 #. Translators: No YouTube video and no multimedia link found
 #: addon\globalPlugins\AVC\__init__.py:843
 msgid "No YouTube video and no multimedia link found"
-msgstr "Aucune vidéo YouTube et aucun lien multimédia trouvé"
+msgstr "Žádné YouTube video ani žádný multimediální odkaz nebyly nalezeny"
 
 #. this groupBox code is based on "NVDA Dev & Test Toolbox" from Cyrille Bougot, thanks
 #. Translators: This is a label for an edit field in the AVC Settings panel.
 #: addon\globalPlugins\AVC\__init__.py:853
 msgid "Result folder"
-msgstr "Dossier de résultats"
+msgstr "Složka s výsledky"
 
 #. Translators: The label of a button to browse for a directory
 #: addon\globalPlugins\AVC\__init__.py:858
 msgid "&Browse..."
-msgstr "&Parcourir..."
+msgstr "Pro&cházet..."
 
 #. Translators: The title of the dialog presented when browsing for the directory.
 #: addon\globalPlugins\AVC\__init__.py:860
 msgid "Select a directory"
-msgstr "Sélectionnez un répertoire"
+msgstr "Vyberte adresář"
 
 #. Translators: Checkbox name for sound signal feedback in the configuration dialog
 #: addon\globalPlugins\AVC\__init__.py:867
 msgid "&beep while converting"
-msgstr "&bip pendant la conversion"
+msgstr "&pípat během převodu"
 
 #. Translators: Checkbox name in the configuration dialog  for video description
 #: addon\globalPlugins\AVC\__init__.py:872
 msgid "&Write YoutTube description file"
-msgstr "Écrire le fichier de &description YouTube"
+msgstr "&Zapsat soubor s YouTube popiskem"
 
 #. Translators: Checkbox name in the configuration dialog  for youtube subtitle
 #. self.YouTubeSubtitleChk = helper.addItem(wx.CheckBox(self, label=_("Always generate youtube &subtitle (needs more time)")))
@@ -114,12 +113,12 @@ msgstr ""
 #. Translators: Checkbox name in the configuration dialog for AVC logging
 #: addon\globalPlugins\AVC\__init__.py:912
 msgid "Write &report file"
-msgstr "Écrire un fichier de &rapport"
+msgstr "Zapsat &protokol"
 
 #. Translator: Title of error dialog "Folder does not exist"
 #: addon\globalPlugins\AVC\__init__.py:930
 msgid "Error - Folder does not exist"
-msgstr "Erreur - Le dossier n'existe pas"
+msgstr "Chyba - Složka neexistuje"
 
 #: addon\globalPlugins\AVC\__init__.py:933
 #, python-brace-format
@@ -128,14 +127,14 @@ msgid ""
 "Please check the path or use the Browse button.\n"
 "The changes were not saved."
 msgstr ""
-"Le dossier ({folderPath}) n'existe pas.\n"
-"Veuillez vérifier le chemin ou utiliser le bouton Parcourir.\n"
-"Les modifications n'ont pas été enregistrées."
+"Složka ({folderPath}) neexistuje.\n"
+"Zkontrolujte cestu nebo použijte tlačítko Procházet.\n"
+"Změny nebyly uloženy."
 
 #. Translator: Title of error dialog "No write access to folder"
 #: addon\globalPlugins\AVC\__init__.py:951
 msgid "Error - No write access to folder"
-msgstr "Erreur - Aucun accès en écriture au dossier"
+msgstr "Chyba - nelze zapisovat do složky"
 
 #: addon\globalPlugins\AVC\__init__.py:954
 #, python-brace-format
@@ -144,9 +143,9 @@ msgid ""
 "Please select a folder with write access.\n"
 "The changes were not saved."
 msgstr ""
-"Aucun accès en écriture au dossier {folderPath} (Code : {code})\n"
-"Veuillez sélectionner un dossier avec accès en écriture.\n"
-"Les modifications n'ont pas été enregistrées."
+"Nelze zapisovat do složky {folderPath} (Kód: {code})\n"
+"Vyberte prosím složku s přístupem pro zápis.\n"
+"Změny nebyly uloženy."
 
 #. Translators: A system error message to translate
 #: addon\globalPlugins\AVC\__init__.py:1016
@@ -171,24 +170,24 @@ msgstr ""
 #. Translators: The converting process will terminate by user
 #: addon\globalPlugins\AVC\__init__.py:1090
 msgid "The converting process will terminate."
-msgstr "Le processus de conversion se terminera."
+msgstr "Proces převodu bude ukončen."
 
 #. Translators: Canceling process by user. No converting task active.
 #: addon\globalPlugins\AVC\__init__.py:1100
 msgid "No converting task active."
-msgstr "Aucune tâche de conversion active."
+msgstr "Žádný převod není aktivní."
 
 #: addon\globalPlugins\AVC\__init__.py:1142
 msgid "Save as MP3"
-msgstr "Enregistrer au format MP3"
+msgstr "Uložit jako MP3"
 
 #: addon\globalPlugins\AVC\__init__.py:1150
 msgid "Save as MP4"
-msgstr "Enregistrer en MP4"
+msgstr "Uložit jako MP4"
 
 #: addon\globalPlugins\AVC\__init__.py:1158
 msgid "Open result folder"
-msgstr "Ouvrir le dossier de résultats"
+msgstr "Otevřít složku s výsledky"
 
 #: addon\globalPlugins\AVC\__init__.py:1168
 msgid "Saves the subtitle of a YouTube video"
@@ -204,14 +203,14 @@ msgstr ""
 #: addon\globalPlugins\AVC\__init__.py:1212
 #, fuzzy
 msgid "No YouTube video link found"
-msgstr "Aucune vidéo YouTube et aucun lien multimédia trouvé"
+msgstr "Žádné YouTube video ani žádný multimediální odkaz nebyly nalezeny"
 
 #. Add-on summary/title, usually the user visible name of the add-on
 #. Translators: Summary/title for this add-on
 #. to be shown on installation and add-on information found in add-on store
 #: buildVars.py:21
 msgid "Audio Video Converter"
-msgstr "Convertisseur audio-vidéo"
+msgstr "Audio Video Konvertor"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-on store
@@ -239,5 +238,5 @@ msgstr ""
 #~ "Converts a YouTube video or a multimedia link to MP3 or MP4 directly from "
 #~ "the browser."
 #~ msgstr ""
-#~ "Convertit une vidéo YouTube ou un lien multimédia en MP3 ou MP4 "
-#~ "directement depuis le navigateur."
+#~ "Přímo z webového prohlížeče převede video z YouTube nebo multimediálního "
+#~ "odkazu do formátu MP3 nebo MP4."
